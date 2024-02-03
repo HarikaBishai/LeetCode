@@ -9,21 +9,17 @@ class Solution:
 
         
         for i in range(1, len(s)):
+            left_zeros[i]  = left_zeros[i-1]
             if s[i-1] == '0':
-                left_zeros[i] = left_zeros[i-1] + 1
-            else:
-                left_zeros[i]  = left_zeros[i-1]
+                left_zeros[i] += 1
+                
         
 
         for i in range(len(s)-2, -1, -1):
+            right_ones[i] = right_ones[i+1]
             if s[i+1] == '1':
-                right_ones[i] = right_ones[i+1] + 1
-            else:
-                right_ones[i] = right_ones[i+1]
-
-        
-        # left_zeros = left_zeros[1:]
-        # right_ones = right_ones[:-1]
+                right_ones[i] += 1
+                
 
         out = 0
         for i in range(1, len(s)):
