@@ -1,5 +1,6 @@
 class Solution:
     def kthFactor(self, n: int, k: int) -> int:
+        
         if n == 1 and k == 1:
             return 1
         first_factors = []
@@ -13,7 +14,6 @@ class Solution:
                     last_factors.append(n//i)
             i += 1
 
-        print(first_factors, last_factors)
         if len(first_factors) >= k:
             return first_factors[k-1]
         elif len(first_factors) + len(last_factors) >= k :
