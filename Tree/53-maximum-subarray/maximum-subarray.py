@@ -6,8 +6,14 @@ class Solution:
         
         for i in range(len(nums)):
             
-            currSum = max(currSum + nums[i], nums[i])
-            
+            currSum += nums[i]
             maxSum = max(currSum, maxSum)
+
+            currSum = max(currSum, 0)
+
+            # currSum = max(currSum + nums[i], nums[i])
+
+            
+            
         
         return maxSum
