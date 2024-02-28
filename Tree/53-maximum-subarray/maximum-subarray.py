@@ -3,6 +3,7 @@ class Solution:
         maxSum = float('-inf')
 
         currSum  = 0
+        
         for i in range(len(nums)):
             
             currSum = max(currSum + nums[i], nums[i])
