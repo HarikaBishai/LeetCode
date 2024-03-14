@@ -10,18 +10,17 @@ class Solution:
         total = 0
         for i in range(len(num2)-1, -1, -1):
             curr = int(num2[i])
+
             curr_sum = 0
             carry  = 0
             curr_multiplier = 1
             for j in range(len(num1)-1, -1, -1):
-                prod = curr*int(num1[j]) + carry
                 
+                prod = curr*(ord(num1[j])- ord('0')) + carry
                 curr_sum += (prod%10)*curr_multiplier 
                 carry = prod //10
                 curr_multiplier *= 10
-                # print( prod, carry, curr_sum)
 
-           
             if carry:
                 curr_sum = carry * curr_multiplier + curr_sum
             total += curr_sum*multiplier
