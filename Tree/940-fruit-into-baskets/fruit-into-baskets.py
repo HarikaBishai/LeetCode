@@ -13,7 +13,7 @@ class Solution:
                 counter[f]-=1
                 total-=1
                 l+=1
-                if not counter[f]:
+                if counter[f] == 0:
                     counter.pop(f)
                     
             res = max(res, total)
