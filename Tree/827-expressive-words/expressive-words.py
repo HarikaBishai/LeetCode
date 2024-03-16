@@ -18,8 +18,6 @@ class Solution:
             word_mapper = getExpressiveWordsMapping(word)
             if (len(word_mapper) != len(s_mapping)) or len(word_mapper) == 1:
                 continue
-            
-                
 
             i = 0
             while i<len(word_mapper):
