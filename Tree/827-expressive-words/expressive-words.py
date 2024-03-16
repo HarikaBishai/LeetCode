@@ -25,7 +25,6 @@ class Solution:
             while i<len(word_mapper):
                 word_count = word_mapper[i]
                 s_word_count = s_mapping[i]
-                print(word_mapper[i], s_mapping[i])
                 if word_count[0] == s_word_count[0] and word_count[1] <= s_word_count[1] and (word_count[1] == s_word_count[1] or s_word_count[1] >= 3):
                     i+=1
                 else:
