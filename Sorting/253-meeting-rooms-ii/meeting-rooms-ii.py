@@ -1,6 +1,6 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        intervals = sorted(intervals, key=lambda x: x[0])
+        intervals = sorted(intervals)
         h = [intervals[0][1]]
         heapq.heapify(h)
         out = 1
