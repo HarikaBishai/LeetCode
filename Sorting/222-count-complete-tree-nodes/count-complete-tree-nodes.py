@@ -18,9 +18,11 @@ class Solution:
                 return False
             
             count+=1
-
-            getCount(root.left)
-            getCount(root.right)
+            if root.left:
+                getCount(root.left)
+                getCount(root.right)
+            
+            
 
             return True
 
