@@ -15,16 +15,12 @@ class Solution:
         def getCount(root):
             nonlocal count
             if not root:
-                return False
+                return
             
             count+=1
-            # if root.left:
             getCount(root.left)
             getCount(root.right)
-            
-
-
-            return True
+            return
 
         getCount(root)
         return count
