@@ -10,8 +10,6 @@ class Solution:
         def dfs(s, seen):
             if s[-n:] in seen:
                 return
-
-            
             seen.add(s[-n:])
 
             if len(seen) == possibilites:
