@@ -19,7 +19,7 @@ class Solution:
                     curr_str = stk.pop() + curr_str
                 stk.pop()
                 curr_num = ''
-                while stk and len(stk[-1]) == 1 and ord(stk[-1]) >= ord('0') and ord(stk[-1]) <= ord('9'):
+                while stk and len(stk[-1]) == 1 and ord(stk[-1]) in range(ord('0'), ord('9')+1):
                     curr_num = stk.pop() + curr_num
                 stk.append((curr_str*int(curr_num)))
             else:
