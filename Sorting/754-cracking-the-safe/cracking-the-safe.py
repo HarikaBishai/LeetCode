@@ -7,8 +7,7 @@ class Solution:
         possibilites = k ** n       
 
         print(possibilites)
-        def dfs(s, seen, possibilites):
-            # print(s,  s[-n:])
+        def dfs(s, seen):
             if s[-n:] in seen:
                 return
 
@@ -16,13 +15,12 @@ class Solution:
             seen.add(s[-n:])
 
             if len(seen) == possibilites:
-                # print(seen, possibilites, s)
                 return s
             for i in range(k):
-                max_len = dfs(s+str(i), set(list(seen)), possibilites)
+                max_len = dfs(s+str(i), set(list(seen)))
                 # print(max_len)
                 if max_len: return max_len    
                 
             
-        return dfs('0' * n, set(), k**n)
+        return dfs('0' * n, set())
 
