@@ -18,8 +18,6 @@ class Solution:
                 while stk[-1] != '[':
                     curr_str = stk.pop() + curr_str
                 stk.pop()
-                
-                print(stk)
                 curr_num = ''
                 while stk and len(stk[-1]) == 1 and ord(stk[-1]) >= ord('0') and ord(stk[-1]) <= ord('9'):
                     curr_num = stk.pop() + curr_num
