@@ -16,9 +16,7 @@ class Solution:
                 return s
             for i in range(k):
                 max_len = dfs(s+str(i), set(list(seen)))
-                # print(max_len)
                 if max_len: return max_len    
-                
             
         return dfs('0' * n, set())
 
