@@ -1,33 +1,29 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        
         graph = {}
 
-        for i in range(1,n+1):
+        for i in range(1, n+1):
             graph[i] = []
-
-        for src,end,wei in times:
-            graph[src].append((wei, end))
-
-
+        
+        for src, dest, wei in times:
+            graph[src].append((wei, dest))
+        
+        heap = [(0, k)]
+        heapq.heapify(heap)
         shortest = {}
-        h = [(0,k)]
-        heapq.heapify(h)
 
-        while h:
-            w1,n1 = heapq.heappop(h)
+        while heap:
+            curr_wei, dest = heapq.heappop(heap)
 
-            if n1 in shortest:
+            if dest in shortest:
                 continue
-            
-            shortest[n1] = w1
 
-            for w2, nei in graph[n1]:
+            shortest[dest] = curr_wei
+
+            for wei, nei in graph[dest]:
                 if nei not in shortest:
-                    heapq.heappush(h, (w1+w2, nei))
-        
-        for i in range(1,n+1):
-            if i not in shortest:
-                return -1
-        
-        return max(shortest.values())
+                    heapq.heappush(heap,(curr_wei+wei, nei))
+            print(heap)
+
+        print(shortest)
+        return max(shortest.values()) if len(shortest.keys() ) == n else -1
