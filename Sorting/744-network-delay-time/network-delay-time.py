@@ -23,7 +23,5 @@ class Solution:
             for wei, nei in graph[dest]:
                 if nei not in shortest:
                     heapq.heappush(heap,(curr_wei+wei, nei))
-            print(heap)
 
-        print(shortest)
         return max(shortest.values()) if len(shortest.keys() ) == n else -1
