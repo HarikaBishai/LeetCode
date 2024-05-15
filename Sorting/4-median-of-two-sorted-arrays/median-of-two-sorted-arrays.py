@@ -4,7 +4,6 @@ class Solution:
 
         l1 ,l2 = 0, 0
         n =  len(nums1)  + len(nums2)
-        print((n//2) + 1)
         merged = []
         i = 0
         while l1 < len(nums1) and l2 < len(nums2) and i < ((n//2)+1) :
