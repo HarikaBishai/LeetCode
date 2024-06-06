@@ -8,12 +8,10 @@ class Solution:
         for ele in costs:
             countArray[ele-1]+=1
         
-        
-
         counter = 0
         for i in range(len(countArray)):
-            if coins>0 and i+1 <= coins:
-                while countArray[i] and coins > 0 and i+1 <= coins:
+            if i+1 <= coins:
+                while countArray[i] and i+1 <= coins:
                     coins-=i+1
                     countArray[i]-=1
                     counter+=1
