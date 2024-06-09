@@ -1,42 +1,43 @@
-class UnionFind():
+class UnionFind:
     def __init__(self, n):
+        self.parent = [i for i in range(n)]
+        self.rank = [0] * n
         self.count = n
-        self.parent = [i for i in range(0, n)]
-        self.rank = [0]*n
 
-    def findParent(self, i):
-        if self.parent[i] == i:
+    def find(self, i):
+        if i == self.parent[i]:
             return i
         else:
-            topparent = self.findParent(self.parent[i])
-            self.parent[i] = topparent
-            return topparent
-    
-    def unionNodes(self, u , v):
-        pu = self.findParent(u)
-        pv = self.findParent(v)
+            result = self.find(self.parent[i])
+            self.parent[i] = result
+            return result
+
+    def unionNodes(self, u, v):
+        pu = self.find(u)
+        pv = self.find(v)
 
         if pu == pv:
             return
-        
-        urank = self.rank[u]
-        vrank = self.rank[v]
+
+        urank = self.rank[pu]
+        vrank = self.rank[pv]
 
         if urank < vrank:
-            self.parent[pu] = self.parent[pv]
-        elif vrank < urank:
-            self.parent[pv] = self.parent[pu]
+            self.parent[pu] = pv
+        elif urank > vrank:
+            self.parent[pv] = pu
         else:
-            self.parent[pu] = self.parent[pv]
-            self.rank[pu] += 1
+            self.parent[pu] = pv
+            self.rank[pv] += 1
+        self.count -= 1
 
-        self.count-=1
+
 class Solution:
-   
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
-        uf = UnionFind(n)
 
-        for u,v in edges:
-            uf.unionNodes(u,v)
+        UN = UnionFind(n)
 
-        return uf.count
+        for u, v in edges:
+            UN.unionNodes(u, v)
+
+        return UN.count
