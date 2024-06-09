@@ -8,9 +8,8 @@ class UnionFind:
         if i == self.parent[i]:
             return i
         else:
-            result = self.find(self.parent[i])
-            self.parent[i] = result
-            return result
+            self.parent[i] = self.find(self.parent[i])
+            return self.parent[i]
 
     def unionNodes(self, u, v):
         pu = self.find(u)
