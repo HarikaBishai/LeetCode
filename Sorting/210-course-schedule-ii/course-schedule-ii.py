@@ -1,34 +1,32 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        graph = {}
+        graph  = {i:[] for i in range(numCourses)}
 
-        for i in range(numCourses):
-            graph[i] = []
+        for dest, src in prerequisites:
+            graph[src].append(dest)
 
-        for csc, pre in prerequisites:
-            graph[csc].append(pre)
-
-        visited , cycle = set(), set()
+        visited = set()
+        path = set()
         out = []
+        
+        def dfs(i):
+            visited.add(i)
+            path.add(i)
 
-        def dfs(crc):
-            if crc in cycle:
-                return False
-            if crc in visited:
-                return True
-
-            visited.add(crc)
-            cycle.add(crc)
+            for nei in graph[i]:
+                if nei not in visited:
+                    if dfs(nei):
+                        return True
+                elif nei in path:
+                    return True
             
-            for pre in graph[crc]:
-                if dfs(pre) == False:
-                    return False
-            
-            out.append(crc)
-            cycle.remove(crc)
-
+            path.remove(i)
+            out.append(i)
+            return False
+        
         for i in range(numCourses):
             if i not in visited:
-                if dfs(i) == False:
+                if dfs(i):
                     return []
-        return out
+        
+        return out[::-1]
