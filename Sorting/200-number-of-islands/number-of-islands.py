@@ -5,7 +5,6 @@ class Solution:
         n = len(grid[0])
         visited = [[0 for _ in range(n)] for _ in range(m)]
 
-        print(visited)
         def dfs(i, j):
             visited[i][j] = 1
             dir = [(-1, 0), (1,0), (0,-1), (0,1)]
