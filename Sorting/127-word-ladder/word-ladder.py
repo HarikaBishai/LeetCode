@@ -34,7 +34,7 @@ class Solution:
                             if nei not in visited:
                                 q.append(nei)
                                 visited.add(nei)
-                res+=1
+                res+=1 
 
             return 0
         res = bfs()
