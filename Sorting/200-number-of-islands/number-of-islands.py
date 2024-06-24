@@ -3,7 +3,6 @@ class Solution:
         out = 0
         m = len(grid)
         n = len(grid[0])
-        print(m, n)
         visited = [[0 for _ in range(n)] for _ in range(m)]
 
         print(visited)
