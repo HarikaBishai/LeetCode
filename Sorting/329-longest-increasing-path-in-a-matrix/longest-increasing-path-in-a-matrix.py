@@ -1,35 +1,36 @@
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
-        rows , cols = len(matrix), len(matrix[0])
-
-
         dp = {}
 
-        def dfs(r,c, prevValue):
-            if matrix[r][c] <= prevValue:
+        m = len(matrix)
+        n = len(matrix[0])
+
+        maxSum = 0
+
+        def dfs(i, j, prevValue):
+            if matrix[i][j] <= prevValue:
                 return 0
-            if (r, c) in dp:
-                return dp[(r,c)]
+            if (i,j) in dp:
+                return dp[(i,j)]
             
-            directions = [(-1,0), (1,0), (0, -1), (0,1)] 
             res = 1
 
-            for dir in directions:
-                new_r = r+dir[0]
-                new_c = c+dir[1]
+            dir = [(-1,0),(0,1),(1,0),(0,-1)]
 
-                if new_r in range(rows) and new_c in range(cols):
-                    res = max(res, 1+ dfs(new_r, new_c, matrix[r][c]))
-                
-            dp[(r,c)] = res
+            for r, c in dir:
+                new_r = i + r
+                new_c = j + c
+
+                if new_r in range(m) and new_c in range(n):
+                    res = max(res, 1+ dfs(new_r, new_c, matrix[i][j]))
+
+            dp[(i,j)] = res
             return res
 
 
+        for i in range(m):
+            for j in range(n):
+                if (i,j) not in dp:
+                    maxSum = max(maxSum, dfs(i, j, -1))
 
-        for r in range(rows):
-            for c in range(cols):
-                if (r,c) not in dp: 
-                    dp[(r,c)] = dfs(r,c, -1)
-
-        print(dp)
-        return max(dp.values())
+        return maxSum
