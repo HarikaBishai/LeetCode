@@ -16,7 +16,8 @@ class Solution:
                     return
                 count+=1
                 visited.add(node)
-
+                if not node.left:
+                    return
                 dfs(node.left)
                 dfs(node.right)
             dfs(root)
