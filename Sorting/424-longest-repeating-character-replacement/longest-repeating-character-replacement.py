@@ -8,7 +8,6 @@ class Solution:
             hash[ord('A')-ord(s[r])]+=1
 
             while (r-l+1) - max(hash) > k:
-                print(l)
                 hash[ord('A')-ord(s[l])]-=1
                 l+=1
             maxlen = max(maxlen, r-l+1)
