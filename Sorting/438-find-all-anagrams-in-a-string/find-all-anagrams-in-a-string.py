@@ -6,21 +6,6 @@ class Solution:
 
         l = 0
         out = []
-
-        # def check(i):
-        #     counter = target.copy()
-        #     k = 0
-        #     for i in range(i, i+tlen):
-        #         if s[i] not in counter or counter[s[i]] == 0:
-        #             break
-        #         counter[s[i]]-=1
-        #         k+=1
-        #     return k == tlen
-
-        # for i in range(len(s)-tlen+1):
-
-        #     if check(i):
-        #         out.append(i)
         counter= target.copy()
         for i in range(len(s)):
             if s[i] not in p:
@@ -34,10 +19,6 @@ class Solution:
 
                 if sum(counter.values()) == 0:
                     out.append(l)
-
-
-
-
 
         return out
         
