@@ -7,8 +7,8 @@ class Solution:
             if i < k:
                 heapq.heappush(h,(value, key))
             else:
-                if h[0][0] < value:
-                    heapq.heappushpop(h,(value, key))
+                # if h[0][0] < value:
+                heapq.heappushpop(h,(value, key))
             i+=1 
         out = []
         while h:
