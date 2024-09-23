@@ -12,7 +12,7 @@ class Solution:
                 up = float('inf')
                 if r>0:
                     up= dp[r-1][c]
-                left = float(inf)
+                left = float('inf')
                 if c>0:
                     left = dp[r][c-1]
                 dp[r][c] = grid[r][c] +  min(up, left)
