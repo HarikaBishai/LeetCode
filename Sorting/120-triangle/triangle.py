@@ -10,11 +10,9 @@ class Solution:
                     continue
                 up = float('inf')
                 if i > 0 and j in range(i):
-                    print(i-1,j)
                     up = dp[i-1][j]
                 upleft = float('inf')
                 if i > 0 and j in range(1, i+1):
                     upleft = dp[i-1][j-1]
                 dp[i][j] = min(up, upleft) + triangle[i][j]
-        print(dp)
         return min(dp[-1])
