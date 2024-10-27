@@ -1,15 +1,13 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-
+        counter = defaultdict(int)
+        maxLen = 0
         l = 0
-        hash = [0]*26
-        maxlen = 0
+
         for r in range(len(s)):
-            hash[ord('A')-ord(s[r])]+=1
-
-            while (r-l+1) - max(hash) > k:
-                hash[ord('A')-ord(s[l])]-=1
+            counter[s[r]]+=1
+            while (r-l+1) - max(counter.values()) > k:
+                counter[s[l]]-=1
                 l+=1
-            maxlen = max(maxlen, r-l+1)
-
-        return maxlen
+            maxLen = max(maxLen, r-l+1)
+        return maxLen
