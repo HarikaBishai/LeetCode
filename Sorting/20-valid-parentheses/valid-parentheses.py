@@ -1,22 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stk = []
-        i = 0
-        
-        valid_mapping = {
-            '}': '{',
-            ']': '[',
-            ')': '('
-        }
-        
-        while i<len(s):
-            if s[i] in ['(', '{', '['] :
-                stk.append(s[i])
+        for r in s:
+            if r in ['(','[','{']:
+                stk.append(r)
             else:
-                if not stk or stk.pop() != valid_mapping[s[i]]:
+                if not stk:
                     return False
-            i+=1
+                elif (stk[-1] == '(' and r == ')' )or (stk[-1] == '[' and r == ']' )or (stk[-1] == '{' and r == '}'):
+                    stk.pop()
+                else:
+                    return False
+                
         if stk:
             return False
-        
         return True
