@@ -2,7 +2,6 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         final_out = []
         def getCombinations(candidates, n, target, out=[]):
-            print(target, out)
             if target == 0:
                 if out:
                     final_out.append(out)
