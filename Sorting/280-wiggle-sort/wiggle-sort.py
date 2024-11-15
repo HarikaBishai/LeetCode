@@ -5,8 +5,14 @@ class Solution:
         """
         nums.sort()
 
-        for i in range(1, len(nums)-1, 2):
-            nums[i], nums[i+1] = nums[i+1], nums[i]
+        flag = False
+        for i in range(1, len(nums)):
+            if (not flag) and nums[i] < nums[i-1]:
+                nums[i], nums[i-1] = nums[i-1], nums[i]
+            elif flag and nums[i] > nums[i-1]:
+                nums[i], nums[i-1] = nums[i-1], nums[i]
+        
+            flag =  False if flag else True
         
         return nums
 
