@@ -12,7 +12,7 @@ class Solution:
             elif flag and nums[i] > nums[i-1]:
                 nums[i], nums[i-1] = nums[i-1], nums[i]
         
-            flag =  False if flag else True
+            flag =  not flag
         
         return nums
 
