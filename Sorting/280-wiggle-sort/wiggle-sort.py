@@ -3,7 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        nums.sort()
 
         flag = False
         for i in range(1, len(nums)):
