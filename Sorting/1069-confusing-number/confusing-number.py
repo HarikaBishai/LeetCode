@@ -8,11 +8,8 @@ class Solution:
             8:8,
             9:6
         }
-
         rev = 0
-        # n = int(str(n).rstrip('0'))
         temp = n
-        print(temp)
         while temp:
             curr = temp % 10
             if curr not in rotations:
@@ -20,7 +17,6 @@ class Solution:
             
             rev = rev * 10 + rotations[curr] % 10
             temp = temp // 10
-        print(n, rev)
        
 
         return True if n!=rev else False 
