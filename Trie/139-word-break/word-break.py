@@ -5,7 +5,6 @@ class Solution:
         mem = {}
 
         def dp(i):
-            print(mem, i)
             if i < 0: return True
             if i in mem: return mem[i]
             for word in wordDict:
@@ -14,5 +13,4 @@ class Solution:
                     return True
             mem[i] = False
             return False
-        print(mem)
         return dp(len(s)-1)
