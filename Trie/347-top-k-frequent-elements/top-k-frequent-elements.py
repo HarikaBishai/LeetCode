@@ -6,11 +6,6 @@ class Solution:
         counter = Counter(nums)
 
         largest = [key for key, val in h.nlargest(k, counter.items(), key=lambda x: x[1])]
-        # for key, val in counter.items():        
-        #     h.heappush(largest, (val, key))
-        #     if k < len(largest):
-        #         h.heappop(largest)
-    
-        # out = [key for val, key in largest]
+       
         return largest
         
