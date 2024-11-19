@@ -10,5 +10,4 @@ class Solution:
                 res += prefix_sum[curr_sum - k]
             prefix_sum[curr_sum] += 1
 
-        print(prefix_sum)
         return res
