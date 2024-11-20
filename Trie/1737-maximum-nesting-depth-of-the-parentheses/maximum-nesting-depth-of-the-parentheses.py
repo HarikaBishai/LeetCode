@@ -7,7 +7,7 @@ class Solution:
         for char in s:
             if char == '(':
                 balance+=1
-                max_length = max(max_length, balance)
             elif char == ')':
                 balance-=1
+            max_length = max(max_length, balance)
         return max_length
