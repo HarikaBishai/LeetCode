@@ -12,6 +12,6 @@ class Solution:
             stk.append(val)
         n = len(num)
 
-        s = ("".join(stk[:len(stk)-k])).lstrip("0")
+        s = "".join(stk[:len(stk)-k]).lstrip("0")
         
         return s if s else "0"
