@@ -3,7 +3,6 @@ class Solution:
         
         ROWS = len(matrix)
         COLS = len(matrix[0]) 
-        cache = {}
 
         dp = [[1 if matrix[j][i] == '1' else 0 for i in range(COLS)] for j in range(ROWS) ]
 
