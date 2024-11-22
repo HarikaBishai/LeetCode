@@ -11,8 +11,5 @@ class Solution:
                 out[idx] = num
             
             stk.append((i, num))
-
-        
-
                     
         return out
