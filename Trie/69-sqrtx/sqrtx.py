@@ -8,6 +8,8 @@ class Solution:
         while l <= r:
             mid = (l+r)//2
             squareVal = mid*mid
+            if squareVal == x:
+                return mid
             if squareVal > x:
                 r = mid-1
             else:
