@@ -1,7 +1,7 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
         l = 1 
-        r = x
+        r = (x+1)//2
 
         res = 0
 
