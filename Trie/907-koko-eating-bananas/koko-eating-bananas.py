@@ -8,7 +8,7 @@ class Solution:
             count = 0
 
             for pile in piles:
-                count+= math.ceil(float(pile)/k)
+                count+= math.ceil(pile/k)
             
             return count
     
