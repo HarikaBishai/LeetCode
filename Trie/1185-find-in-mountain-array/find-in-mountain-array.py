@@ -28,7 +28,6 @@ class Solution:
             else:
                 r = m-1
         
-        print(peak, mountainArr.get(peak))
         l = 0
         r = peak
 
