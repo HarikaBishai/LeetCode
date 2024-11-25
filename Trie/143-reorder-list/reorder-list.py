@@ -28,15 +28,12 @@ class Solution:
             slow = slow.next
         
         end = reverse(slow)
-        print(end)
         curr = head
         while curr and curr.next!=end:
-            curr_next = curr.next
-            end_next = end.next
+            curr_next, end_next= curr.next, end.next
             curr.next = end
             end.next = curr_next
-            curr = curr_next
-            end = end_next
+            curr, end = curr_next, end_next
            
         
         return head
