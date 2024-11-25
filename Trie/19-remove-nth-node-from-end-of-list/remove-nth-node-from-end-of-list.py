@@ -19,9 +19,6 @@ class Solution:
         while curr:
             curr = curr.next
             start = start.next
-            
-        print(start)
-
         
         start.next = start.next.next
         return dummy.next
