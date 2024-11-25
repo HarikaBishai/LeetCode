@@ -27,7 +27,7 @@ class Solution:
         
 
         start = head
-        while start!=end and start and end:
+        while end:
             if start.val == end.val:
                 start= start.next
                 end = end.next
