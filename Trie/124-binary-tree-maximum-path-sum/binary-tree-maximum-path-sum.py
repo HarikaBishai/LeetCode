@@ -24,6 +24,6 @@ class Solution:
             maxSum = max(maxSum, leftPathSum + rightPathSum + root.val)
 
 
-            return max(root.val + leftPathSum, rightPathSum + root.val, root.val)
+            return max(root.val + leftPathSum, rightPathSum + root.val)
         getMaxSum(root)
         return maxSum
