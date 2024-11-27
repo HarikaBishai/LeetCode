@@ -5,7 +5,14 @@ class Solution:
 
         counter = Counter(nums)
 
-        largest = [key for key, val in h.nlargest(k, counter.items(), key=lambda x: x[1])]
-       
-        return largest
+        buckets = [[] for i in range(len(nums)+1)]
+        for key, val in counter.items():
+            buckets[val].append(key)
+        out = []
+        for i in range(len(nums), 0, -1):
+            for ele in buckets[i]:
+                out.append(ele)
+                if len(out) == k:
+                    return out
+        return out
         
