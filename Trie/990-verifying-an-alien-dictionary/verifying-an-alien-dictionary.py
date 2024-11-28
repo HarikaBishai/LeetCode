@@ -4,7 +4,6 @@ class Solution:
 
 
         def dfs(w1, w2, i):
-            print(i)
             if i >= len(w1):
                 return True
             
