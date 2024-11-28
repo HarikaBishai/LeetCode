@@ -9,14 +9,11 @@ class Solution:
         for i in range(1, n+1):
             if graph[i]:
                 continue
-            j = 1
             flag = True
-            while j <= n:
-                if j != i:
-                    if i not in graph[j]:
-                        flag = False
-                        break
-                j+=1
+            for j in range(1, n+1):
+                if j != i and i not in graph[j]:
+                    flag = False
+                    break
             if flag:
                 return i
         return -1
