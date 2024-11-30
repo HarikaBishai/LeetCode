@@ -23,7 +23,7 @@ class Solution:
             dfs(0, c , pac, heights[0][c])
             dfs(ROWS-1, c, atl, heights[ROWS-1][c])
 
-        for r in range(0, ROWS):
+        for r in range(ROWS):
             dfs(r, 0 , pac, heights[r][0])
             dfs(r, COLS-1 , atl, heights[r][COLS-1])
 
