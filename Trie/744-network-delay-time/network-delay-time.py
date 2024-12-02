@@ -7,9 +7,6 @@ class Solution:
         for u,v,w in times:
             graph[u].append((v,w))
 
-
-        
-
         dist = [float('inf')]*n
         dist[k-1] = 0
         h = [(0,k)]
