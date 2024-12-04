@@ -4,7 +4,7 @@ class Solution:
 
 
         def isValid(arr):
-            if len(arr) in [2,3] and len(set(arr))==1:
+            if len(set(arr))==1:
                 return True
             elif len(arr) == 3:
                 start = arr[0]
@@ -26,6 +26,7 @@ class Solution:
                 return dp[i]
             
             dp[i] = (i+2 <= n and isValid(nums[i:i+2]) and dfs(i+2)) or (i+3 <= n and isValid(nums[i:i+3]) and dfs(i+3))
+
             return dp[i]
             
             
