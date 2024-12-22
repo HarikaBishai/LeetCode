@@ -7,6 +7,8 @@ class Solution:
             l = i+1
 
             r = n-1
+            if nums[i] > 0:
+                break
             if i > 0:
                 if nums[i-1] == nums[i]:
                     continue
