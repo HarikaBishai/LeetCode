@@ -5,9 +5,10 @@ class Solution:
         
         prefix = 1
 
-        for i in range(1,n):
-            prefix = prefix * nums[i-1]
+        for i in range(n):
             out[i] = prefix
+            prefix = prefix * nums[i]
+            
             
 
         suffix = 1
