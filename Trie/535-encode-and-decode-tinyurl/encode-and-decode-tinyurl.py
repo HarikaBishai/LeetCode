@@ -5,20 +5,16 @@ class Codec:
     def __init__(self):
         self.id = 1
         self.urlMap = {}
-        self.chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
         
     def encode(self, longUrl: str) -> str:
         """Encodes a URL to a shortened URL.
         """
-        
         currId = self.id
-
-
         shortUrl = ''
+        chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
         while currId > 0:
-            shortUrl += self.chars[currId%62]
+            shortUrl += chars[currId%62]
             currId = currId // 62
 
         self.urlMap[shortUrl[::-1]] = longUrl
@@ -26,7 +22,6 @@ class Codec:
 
         return shortUrl[::-1]
         
-
 
 
     def decode(self, shortUrl: str) -> str:
