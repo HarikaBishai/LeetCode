@@ -3,17 +3,10 @@ class Solution:
         maxP = 0
 
 
-        stk = []
+        minBuy = prices[0]
 
-        for i, p in enumerate(prices):
-            if i == 0:
-                stk.append(p)
-            else:
-                while stk and stk[-1] >= p:
-                    stk.pop()
-
-                if len(stk):
-                    maxP = max(maxP, p - stk[0])
-                
-                stk.append(p)
+        for p in prices:
+            if p < minBuy:
+                minBuy = p
+            maxP = max(maxP, p - minBuy)
         return maxP
