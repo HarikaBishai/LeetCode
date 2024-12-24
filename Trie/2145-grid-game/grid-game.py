@@ -2,14 +2,12 @@ class Solution:
     def gridGame(self, grid: List[List[int]]) -> int:
         
 
-        total = sum(grid[0])
+        topSum = sum(grid[0])
         bottom = 0
-        prefix = 0
         res = float('inf')
         for i in range(len(grid[0])):
-            prefix += grid[0][i]
-            top = total - prefix
-            secondBot = max(top, bottom)
+            topSum -=  grid[0][i]
+            secondBot = max(topSum, bottom)
             res = min(res, secondBot)
             bottom += grid[1][i]
         return res
