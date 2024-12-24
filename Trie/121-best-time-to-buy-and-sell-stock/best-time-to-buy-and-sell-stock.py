@@ -6,6 +6,7 @@ class Solution:
         minBuy = prices[0]
 
         for p in prices:
-            minBuy = min(minBuy,p)
+            if p < minBuy:
+                minBuy = p
             maxP = max(maxP, p - minBuy)
         return maxP
