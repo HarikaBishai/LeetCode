@@ -19,7 +19,6 @@ class Solution:
             last = curr
             coords.add(last)
 
-        print(coords)
         return False
 
             
