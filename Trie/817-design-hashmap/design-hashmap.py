@@ -7,10 +7,10 @@ class ListNode:
 class MyHashMap:
 
     def __init__(self):
-        self.map = [ListNode() for _ in range(1000)]
+        self.map = [ListNode() for _ in range(10**4)]
 
     def hash(self, val):
-        return val % (1000)
+        return val % (10**4)
 
     def put(self, key: int, value: int) -> None:
         idx = self.hash(key)
