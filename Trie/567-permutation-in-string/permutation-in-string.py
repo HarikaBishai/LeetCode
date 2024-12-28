@@ -1,26 +1,29 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        count_s2 = {}
+        count_s1 = Counter(s1)
 
-        if len(s1) > len(s2):
-            return False
-        counter_s1 = Counter(s1)
-        
-        matches = 0
-        curr = defaultdict(int)
-        l=0
-        for i in range(len(s2)):
-            curr[s2[i]]+=1
-            
-            if s2[i] in counter_s1 and curr[s2[i]] == counter_s1[s2[i]]:
-                matches+=1 
-            if i-l+1 > len(s1):
-                curr[s2[l]]-=1
-                if s2[l] in counter_s1 and curr[s2[l]]+1 == counter_s1[s2[l]]:
-                    matches-=1
-                l+=1
-            if matches == len(counter_s1.keys()):
-                return True
+        target_s = set()
 
-            
+        l = 0
+        for r in range(len(s2)):
+            count_s2[s2[r]] = 1 + count_s2.get(s2[r],0)
+            if s2[r] in count_s1:
+                while count_s2[s2[r]] > count_s1[s2[r]]:
+                    count_s2[s2[l]]-=1
+                    if count_s2[s2[l]] < count_s1[s2[l]] and s2[l] in target_s:
+                        target_s.remove(s2[l])
+                    l+=1
+
+                if count_s1[s2[r]] == count_s2[s2[r]]:
+                    target_s.add(s2[r])
+                if len(target_s) == len(count_s1):
+                    return True
+            else:
+                count_s2 = {}
+                target_s = set()
+                l = r+1
         return False
+            
+
 
