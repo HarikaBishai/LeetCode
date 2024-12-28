@@ -2,7 +2,6 @@ class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         stk = []
         out = []
-        l = 0
         for i in range(len(nums)):
             while stk and  stk[-1][1] < nums[i]:
                 stk.pop()
