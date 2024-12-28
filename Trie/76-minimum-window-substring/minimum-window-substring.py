@@ -3,7 +3,7 @@ class Solution:
 
         if len(t) > len(s):
             return "" 
-        minLen = len(s)
+        minLen = len(s) + 1
         count_t = Counter(t)
         target = set()
         counter_s = {}
@@ -17,7 +17,7 @@ class Solution:
             if s[r] in count_t and counter_s[s[r]] == count_t[s[r]] and s[r] not in target:
                 target.add(s[r])
             while len(target) == len(count_t):
-                if r-l+1 <= minLen:
+                if r-l+1 < minLen:
                     minLen = min(r-l+1, minLen)
                     min_l = l
                 counter_s[s[l]] -= 1
