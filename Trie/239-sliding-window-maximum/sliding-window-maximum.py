@@ -8,9 +8,9 @@ class Solution:
                 stk.pop()
 
             stk.append((i, nums[i]))
-            l+=1
+ 
 
-            if l > k-1:
+            if i >= k-1:
                 out.append(stk[0][1])
             
             if stk and stk[0][0] <= i-k+1:
