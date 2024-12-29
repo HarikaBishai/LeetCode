@@ -1,23 +1,25 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        
+        open = 0
+        close = 0
+
+
         out = []
         stk = []
 
 
-        def backtrack(open, close):
-            if open == close == n:
+        def dfs(open, close, stk):
+            if open == n and close == n:
                 out.append("".join(stk))
-                return
             
             if open < n:
                 stk.append('(')
-                backtrack(open+1,close)
+                dfs(open+1, close, stk)
                 stk.pop()
             if close < open:
                 stk.append(')')
-                backtrack(open,close+1)
+                dfs(open, close+1, stk)
                 stk.pop()
-        backtrack(0,0)
+                
+        dfs(0,0, stk)
         return out
-
