@@ -8,14 +8,14 @@ class Solution:
                     top = stk[-1]
                     if abs(top) == abs(ast):
                         stk.pop()
-                        ast = float(inf)
+                        ast = float('inf')
                         break
                     elif abs(top) > abs(ast):
-                        ast = float(inf)
+                        ast = float('inf')
                         break
                     else:
                         stk.pop()
-                if ast!= float(inf):
+                if ast!= float('inf'):
                     stk.append(ast)
 
             else:
