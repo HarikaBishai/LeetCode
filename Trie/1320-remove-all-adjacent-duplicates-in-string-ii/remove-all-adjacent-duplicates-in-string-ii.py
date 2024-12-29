@@ -1,25 +1,23 @@
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        if k == 1: return ""
+        
         stk = []
 
         for char in s:
-            count = 1
-            if stk and stk[-1][0] == char:
-                topChar, topCount = stk.pop()
-                count+=topCount
-            
-            if count == k:
-                continue
+            if not stk:
+                stk.append((1,char))
             else:
-                stk.append((char,count))
-        
-        out = ""
+                count = 1
+                while stk and stk[-1][1] == char:
+                    count +=  stk.pop()[0]
+                
+                if count == k:
+                    continue
+                else:
+                    stk.append((count, char))
+        out = ''
 
-        for char,count in stk:
-            out+=char*count
-        
+        while stk:
+            count, char = stk.pop()
+            out = count*char + out 
         return out
-        
-
-            
