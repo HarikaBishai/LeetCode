@@ -2,15 +2,14 @@ class Solution:
     def find132pattern(self, nums: List[int]) -> bool:
         stk = []
         currMin = nums[0]
-        for i in nums[1:]:
-            while stk and stk[-1][0] <= i:
+
+        for num in nums[1:]:
+            while stk and num >= stk[-1][0]:
                 stk.pop()
             
-            if stk and i > stk[-1][1]:
+            if stk and num > stk[-1][1] :
                 return True
             
-            stk.append((i,currMin))
-            currMin = min(currMin, i)
-            
-
+            stk.append((num, currMin))
+            currMin = min(num, currMin)
         return False
