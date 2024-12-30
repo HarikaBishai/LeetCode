@@ -1,24 +1,18 @@
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
-        MOD = 10**9+7
+        MOD = 10 ** 9 + 7
 
-        res = 0
+        arr = [float('-inf')] + arr + [float('-inf')]
 
         stk = []
-
+        res = 0
         for i, num in enumerate(arr):
             while stk and stk[-1][1] > num:
-                idx, val = stk.pop()
-                left = idx - stk[-1][0] if stk else idx+1
-                right = i - idx
-                res =  (res + val * left * right) % MOD
-            stk.append((i,num))
-
+                j, n = stk.pop()
+                left = j - stk[-1][0] if stk else j+1
+                right = i-j
+                res = (res + n * left * right ) % MOD
         
-        for i in range(len(stk)):
-            idx, num = stk[i]
-            left = idx - stk[i-1][0] if i > 0 else idx+1
-            right = len(arr) - idx
-            res =  (res + num * left * right) % MOD 
-
+            stk.append((i,num))
         return res
+
