@@ -7,7 +7,7 @@ class Solution:
         while l<=r:
             m = (l+r)//2
 
-            total = (m * (m+1)) / 2
+            total = (m * (m+1)) // 2
             
             if n >= total:
                 ans = max(m, ans)
