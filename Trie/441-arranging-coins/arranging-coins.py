@@ -1,20 +1,18 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        l = 1
+        l = 0
+
         r = n
-        res = 0
+        ans = 0
+        while l<=r:
+            m = (l+r)//2
 
-        while l <= r:
-            mid = (l+r)//2
-
-            coins_needed = ((mid)*(mid+1))//2
-
-            if coins_needed > n:
-                r = mid-1
+            total = (m * (m+1)) / 2
+            
+            if n >= total:
+                ans = max(m, ans)
+                l = m+1
             else:
-                l = mid+1
-                res = max(res, mid)
-        return res
-
-
+                r = m-1
+        return ans
         
