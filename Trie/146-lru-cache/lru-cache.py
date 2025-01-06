@@ -1,50 +1,55 @@
-class Node:
-    def __init__(self, key, val):
-        self.key = key
+class ListNode:
+    def __init__(self,val=0, key=0):
         self.val = val
-        self.prev = self.next = None 
+        self.next = None
+        self.prev = None
+        self.key = key
+
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.cap = capacity
-        self.cache = {}
+        self.capacity = capacity
+        self.left = ListNode()
+        self.right= ListNode()
+        self.left.next = self.right
+        self.right.prev = self.left
+        self.hash = {}
 
-        self.left, self.right = Node(0,0), Node(0,0)
-        self.left.next, self.right.prev = self.right, self.left
 
-    def remove(self, node: Node):
-        prev = node.prev
-        next = node.next
+    def remove(self,node):
+        prev, next = node.prev, node.next
         prev.next = next
         next.prev = prev
-        del node
-    
-    def insert(self, node: Node):
-        prev = self.right.prev
-        prev.next = node
-        node.next = self.right
-        self.right.prev = node
-        node.prev = prev
 
+    def insertAtRight(self,node):
+        prev,next = self.right.prev, self.right
+        prev.next = node
+        next.prev = node
+        node.prev = prev
+        node.next = next
+        
     def get(self, key: int) -> int:
-        if key in self.cache:
-            self.remove(self.cache[key])
-            self.insert(self.cache[key])
-            return self.cache[key].val
+        if key in self.hash:
+            self.remove(self.hash[key])
+            self.insertAtRight(self.hash[key])
+            return self.hash[key].val
         return -1
 
-
     def put(self, key: int, value: int) -> None:
-        if key in self.cache:
-            self.remove(self.cache[key])
-        self.cache[key] = Node(key,value)
-        self.insert(self.cache[key])
-        
-        if len(self.cache.keys()) > self.cap:
-            lru = self.left.next
-            del self.cache[lru.key]
-            self.remove(lru)
+        if key in self.hash:
+            self.remove(self.hash[key])
 
+        node = ListNode(value,key)
+        self.insertAtRight(node)
+        self.hash[key] = node
+
+        if len(self.hash) > self.capacity:
+            lru = self.left.next
+            self.remove(lru)
+            del self.hash[lru.key]
+
+
+        
 
 
 # Your LRUCache object will be instantiated and called as such:
