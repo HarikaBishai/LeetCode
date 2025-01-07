@@ -7,23 +7,18 @@
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         sum = 0
-
-
-        def getSum(root):
+        def dfs(root):
             nonlocal sum
             if not root:
                 return
-            
-            if root.val >= low and root.val<=high:
-                sum+=root.val
-                getSum(root.left)
-                getSum(root.right)
+            if low <= root.val <= high:
+                sum+= root.val
+                dfs(root.left)
+                dfs(root.right)
             elif root.val < low:
-                getSum(root.right)
+                dfs(root.right)
             elif root.val > high:
-                getSum(root.left)
-        getSum(root)
+                dfs(root.left)
+            
+        dfs(root)
         return sum
-
-
-                
