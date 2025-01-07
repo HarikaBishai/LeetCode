@@ -9,11 +9,7 @@ class Solution:
         
   
         def isSub(root, subRoot):
-            if isSame(root, subRoot):
-                return True
-            elif root.left and isSub(root.left, subRoot):
-                return True
-            elif root.right and isSub(root.right,subRoot):
+            if isSame(root, subRoot) or (root.left and isSub(root.left, subRoot)) or (root.right and isSub(root.right,subRoot)):
                 return True
             else:
                 return False
