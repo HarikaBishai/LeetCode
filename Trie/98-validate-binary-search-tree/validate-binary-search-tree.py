@@ -11,7 +11,6 @@ class Solution:
             
             if not root:
                 return True
-            print(minVal, maxVal, root.val)
             if minVal < root.val < maxVal:
             
                 return dfs(root.left, minVal, max(minVal,root.val)) and  dfs(root.right, min(root.val, maxVal), maxVal)
