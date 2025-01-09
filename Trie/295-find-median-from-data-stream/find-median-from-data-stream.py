@@ -15,14 +15,12 @@ class MedianFinder:
 
         else:
 
-            if not self.maxHeap:
-                heapq.heappush(self.maxHeap, -num)
+            
+            if self.maxHeap and self.minHeap[0] < num:
+                popped = heapq.heapreplace(self.minHeap, num)
+                heapq.heappush(self.maxHeap, -popped)
             else:
-                if self.minHeap[0] < num:
-                    popped = heapq.heapreplace(self.minHeap, num)
-                    heapq.heappush(self.maxHeap, -popped)
-                else:
-                    heapq.heappush(self.maxHeap, -num)
+                heapq.heappush(self.maxHeap, -num)
 
         self.length+=1
     def findMedian(self) -> float:
