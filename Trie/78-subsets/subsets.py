@@ -1,7 +1,5 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
-
         out = []
 
         stk = []
@@ -15,4 +13,5 @@ class Solution:
             getSubset(i+1, nums)
 
         getSubset(0,nums)
+
         return out
