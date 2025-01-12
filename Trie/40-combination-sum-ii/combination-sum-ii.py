@@ -1,30 +1,27 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        
+
+        out = []
+
         candidates.sort()
-
-
-        res = []
-        currSum = 0
-        def getCombinations(target,path, n):
-            if target == 0:
-                res.append(path[:])
+        def getCombinations(sum, i, elements=[]):
+            if sum == 0:
+                out.append(elements[:])
+                return
+            
+            if sum < 0 or i <= 0:
                 return 
             
-            if target <= 0 or n <= 0:
-                return 
-            
-            if candidates[n-1] > target:
-                getCombinations(target,path, n-1)
-            
+            if candidates[i-1] > sum:
+                getCombinations(sum, i-1, elements)
             else:
-                path.append(candidates[n-1])
-                getCombinations(target-candidates[n-1],path, n-1)
-                path.pop()
-                while n-1>0 and candidates[n-1] == candidates[n-2]:
-                    n-=1
-                getCombinations(target,path, n-1)
-            
+                getCombinations(sum-candidates[i-1], i-1, elements + [candidates[i-1]])
 
-        getCombinations(target,[], len(candidates))
+                while i-2>=0 and candidates[i-1] == candidates[i-2]:
+                    i=i-1
+                getCombinations(sum, i-1, elements)
 
-        return res
+
+        getCombinations(target, len(candidates))
+        return out
