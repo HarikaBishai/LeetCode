@@ -1,21 +1,22 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
+
+        stk = []
         out = []
-        def getCombinations(target,n, path):
-            if target == 0:
-                out.append(path)
+        def getCombinations(i, sum, elements=[]):
+            if sum == 0:
+                out.append(elements[:])
                 return
-            if target < 0 or n<=0:
+
+            if sum < 0 or i <= 0:
                 return 
-            
-            if candidates[n-1] > target:
-                getCombinations(target,n-1, path)
-            
+            if candidates[i-1] > sum:
+                getCombinations(i-1, sum, elements)
             else:
-                getCombinations(target,n-1, path)
-                getCombinations(target-candidates[n-1],n, path + [candidates[n-1]])
-        
-        getCombinations(target,len(candidates), [])
+                getCombinations(i-1, sum, elements)
+                getCombinations(i, sum-candidates[i-1], elements + [candidates[i-1]])
+            return
+            
+        getCombinations(len(candidates), target)
         return out
-                
