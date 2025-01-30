@@ -8,7 +8,6 @@ class Solution:
             graph[u].append(v)
 
             indegree[v]+=1
-        visited = set()
         q = deque()
         for node in indegree:
             if indegree[node] == 0:
