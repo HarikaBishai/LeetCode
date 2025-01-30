@@ -13,6 +13,5 @@ class Solution:
                 heapq.heappush(heap,end)
                 rooms+=1
             else:
-                alloted_room = heapq.heappop(heap)
-                heapq.heappush(heap,end)
+                heapq.heappushpop(heap, end)
         return rooms
