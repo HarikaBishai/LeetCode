@@ -1,30 +1,45 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         
-
-        R = len(board)
-        C = len(board[0])
-
+        ROWS = len(board)
+        COLS = len(board[0])
+       
         path = set()
 
-        def dfs(i, r,c):
-            if i == len(word):
-                return True
-            if r not in range(R) or c not in range(C) or word[i]!= board[r][c] or (r,c) in path:
+
+        def dfs(r, c, k):
+
+            if word[k] != board[r][c]:
                 return False
             
             path.add((r,c))
 
-            res = dfs(i+1, r+1,c) or dfs(i+1, r-1, c) or dfs(i+1, r, c+1) or dfs(i+1, r, c-1)
+            if len(path) == len(word):
+                return True
+            
+            
+
+            
+           
+            dir = [(-1,0),(1,0), (0,1), (0,-1)]
+
+            for i , j in dir:
+                new_r = i + r
+                new_c = j + c
+
+                if new_r in range(ROWS) and new_c in range(COLS) and (new_r, new_c) not in path:
+                    if dfs(new_r, new_c, k+1):
+                        return True
+
+
 
             path.remove((r,c))
+            return False
 
-            return res
 
-        
-        for i in range(R):
-            for j in range(C):
-                if dfs(0, i,j):
+        for i in range(ROWS):
+            for j in range(COLS):
+                if  dfs(i,j, 0):
                     return True
-        
         return False
+
