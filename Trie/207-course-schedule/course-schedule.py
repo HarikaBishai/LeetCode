@@ -13,7 +13,7 @@ class Solution:
             if indegree[node] == 0:
                 q.append(node)
 
-        while q and numCourses:
+        while q:
             node = q.popleft()
             numCourses -= 1
 
