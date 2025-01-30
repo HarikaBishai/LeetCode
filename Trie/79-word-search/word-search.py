@@ -16,10 +16,6 @@ class Solution:
 
             if len(path) == len(word):
                 return True
-            
-            
-
-            
            
             dir = [(-1,0),(1,0), (0,1), (0,-1)]
 
@@ -30,8 +26,6 @@ class Solution:
                 if new_r in range(ROWS) and new_c in range(COLS) and (new_r, new_c) not in path:
                     if dfs(new_r, new_c, k+1):
                         return True
-
-
 
             path.remove((r,c))
             return False
