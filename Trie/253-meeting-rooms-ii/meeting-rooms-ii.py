@@ -8,7 +8,6 @@ class Solution:
         heap = []
 
         for start, end in intervals:
-            print(heap)
             if not heap or heap[0] > start:
                 heapq.heappush(heap,end)
                 rooms+=1
