@@ -1,10 +1,7 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         rooms = 0
-
-
         intervals.sort()
-
         heap = []
 
         for start, end in intervals:
