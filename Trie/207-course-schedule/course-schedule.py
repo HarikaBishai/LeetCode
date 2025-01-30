@@ -6,14 +6,14 @@ class Solution:
 
         for v, u in prerequisites:
             graph[u].append(v)
-
             indegree[v]+=1
+
         q = deque()
         for node in indegree:
             if indegree[node] == 0:
                 q.append(node)
 
-        while q and numCourses:
+        while q:
             node = q.popleft()
             numCourses -= 1
 
