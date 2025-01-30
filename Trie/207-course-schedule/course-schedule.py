@@ -15,12 +15,8 @@ class Solution:
                 q.append(node)
                 visited.add(node)
 
-
-        print(q, visited)
         while q and numCourses:
             node = q.popleft()
-
-            
             numCourses -= 1
 
             for nei in graph[node]:
@@ -28,7 +24,6 @@ class Solution:
                 if indegree[nei] == 0:
                     q.append(nei)
                     visited.add(nei)
-        print(numCourses)
         return True if numCourses == 0 else False
 
 
