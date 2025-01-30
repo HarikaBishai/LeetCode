@@ -13,7 +13,6 @@ class Solution:
         for node in indegree:
             if indegree[node] == 0:
                 q.append(node)
-                visited.add(node)
 
         while q and numCourses:
             node = q.popleft()
@@ -23,7 +22,7 @@ class Solution:
                 indegree[nei] -= 1
                 if indegree[nei] == 0:
                     q.append(nei)
-                    visited.add(nei)
+                    
         return True if numCourses == 0 else False
 
 
