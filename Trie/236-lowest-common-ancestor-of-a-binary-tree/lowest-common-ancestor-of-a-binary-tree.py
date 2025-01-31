@@ -6,44 +6,38 @@
 #         self.right = None
 
 class Solution:
-
-    def getpath(self, root, node, path=[]):
-        if not root:
-            return False
-        path.append(root)
-        if root == node:
-            return True
-
-        if root.left: 
-            if self.getpath(root.left, node, path):
-                return True
-        if root.right:
-            if self.getpath(root.right, node, path):
-                return True
-        path.pop()
-        return False
-
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        
-        if not root:
-            return None
 
-        pathp = []
-        pathq = []
-        self.getpath(root, p, pathp)
-        self.getpath(root, q, pathq)
+        p_nodes = []
+        q_nodes = []
 
-        minlen = min(len(pathp), len(pathq))
-
-        lastMatched= None
-
-        for i in range(minlen):
-            if pathq[i] != pathp[i]:
-                return lastMatched
-            lastMatched = pathp[i]
-        return lastMatched
+        def dfs(root, node, path):
+            path.append(root)
+            if root == node:
+                return True
+            
+            if root.left:
+                if dfs(root.left, node, path):
+                    return True
+            if root.right:
+                if dfs(root.right, node, path):
+                    return True
             
 
+            path.pop()
+            return False
+        dfs(root, p, p_nodes)
+        dfs(root, q, q_nodes)
+
+
+        minLen = min(len(p_nodes), len(q_nodes))
+
+        for i in range(minLen-1, -1, -1):
+            if p_nodes[i] == q_nodes[i]:
+                return p_nodes[i]
+        
 
 
         
+            
+
