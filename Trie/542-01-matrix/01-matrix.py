@@ -13,7 +13,7 @@ class Solution:
                 if mat[i][j] == 0:
                     q.append((i,j))
                     visited.add((i,j))
-                    out[i][j] = 0
+                    
         level = 1
         while q:
             for _ in range(len(q)):
@@ -26,11 +26,11 @@ class Solution:
                     new_c = j + c
 
                     if new_r in range(ROWS) and new_c in range(COLS) and (new_r, new_c) not in visited:
-                        out[new_r][new_c] = level
+                        mat[new_r][new_c] = level
                         visited.add((new_r, new_c))
                         q.append((new_r, new_c))
             level+=1
-        return out
+        return mat
 
 
 
