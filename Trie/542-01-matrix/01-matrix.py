@@ -16,7 +16,6 @@ class Solution:
                     out[i][j] = 0
         level = 1
         while q:
-            print(q)
             for _ in range(len(q)):
                 r, c = q.popleft()
 
@@ -31,7 +30,6 @@ class Solution:
                         visited.add((new_r, new_c))
                         q.append((new_r, new_c))
             level+=1
-        print(visited)
         return out
 
 
