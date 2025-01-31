@@ -3,9 +3,7 @@ class Solution:
         
         ROWS = len(mat)
         COLS = len(mat[0])
-        
-        
-        out = [[float('inf')]*COLS for _ in range(ROWS)]
+    
         q = deque()
         visited = set()
         for i in range(ROWS):
