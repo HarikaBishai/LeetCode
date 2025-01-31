@@ -8,7 +8,6 @@ class Solution:
         seen = set([0])
 
         while q:
-            print(q)
             for _ in range(len(q)):
                 start = q.popleft()
 
