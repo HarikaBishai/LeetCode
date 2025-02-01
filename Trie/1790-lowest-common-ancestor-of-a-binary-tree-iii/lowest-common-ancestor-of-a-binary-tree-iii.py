@@ -16,7 +16,6 @@ class Solution:
             pathNodes.add(curr)
             curr = curr.parent
 
-        print(pathNodes)
         while q and q not in pathNodes:
             q = q.parent
         return q
