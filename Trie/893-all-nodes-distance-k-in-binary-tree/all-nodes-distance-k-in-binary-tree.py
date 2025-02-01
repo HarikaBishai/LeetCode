@@ -9,6 +9,36 @@ class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
         
 
+        graph = defaultdict(list)
+        def buildgraph(node, parent):
+            if node and parent:
+                graph[node.val].append(parent.val)
+                graph[parent.val].append(node.val)
+            if node.left:
+                buildgraph(node.left, node)
+            if node.right:
+                buildgraph(node.right, node)
+
+        buildgraph(root, None)
+
+        visited = set([target.val])
+        out = []
+        def dfs(node, dist):
+
+            if dist == k:
+                out.append(node)
+                return 
+            
+            for nei in graph[node]:
+                if nei not in visited:
+                    visited.add(nei)
+                    dfs(nei, dist+1)
+            
+
+        dfs(target.val, 0)
+
+        return out
+
         def addParent(curr, parent):
             if curr:
                 curr.parent = parent
