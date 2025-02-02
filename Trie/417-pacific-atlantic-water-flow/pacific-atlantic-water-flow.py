@@ -1,32 +1,31 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        
+
         ROWS = len(heights)
         COLS = len(heights[0])
-        pac, alt = set(), set()
 
+        pac_set = set()
+        alt_set = set()
 
-        def dfs(r,c, visit, height):
-            if r not in range(ROWS) or c not in range(COLS) or (r,c) in visit or heights[r][c] < height:
-                return
-            visit.add((r,c))
-            dfs(r+1,c, visit, heights[r][c])
-            dfs(r-1,c, visit, heights[r][c])
-            dfs(r,c+1, visit, heights[r][c])
-            dfs(r,c-1, visit, heights[r][c])
+        def dfs(r,c, seen, prev):
+            seen.add((r,c))
 
+            dir = [(-1,0),(0,-1),(0,1),(1,0)]
+            for i , j in dir:
+                new_r = r + i
+                new_c = c + j
 
-        for c in range(COLS):
-            dfs(0, c, pac, heights[0][c])
-            dfs(ROWS-1, c, alt, heights[ROWS-1][c])
+                if new_r in range(ROWS) and new_c in range(COLS) and heights[new_r][new_c] >= heights[r][c]  and (new_r, new_c) not in seen:
+                    dfs(new_r, new_c, seen, heights[new_r][new_c])
 
-        for r in range(ROWS):
-            dfs(r, 0, pac, heights[r][0])
-            dfs(r, COLS-1, alt, heights[r][COLS-1])
-
-        res = []
         for i in range(ROWS):
-            for j in range(COLS):
-                if (i,j) in pac and (i,j) in alt:
-                    res.append((i,j))
-        return res
-        
+            dfs(i, 0, pac_set, -1)
+            dfs(i, COLS-1, alt_set, -1)
+
+        for i in range( COLS):
+            dfs(0, i, pac_set, -1)
+            dfs(ROWS-1, i, alt_set, -1)
+
+        print(pac_set, alt_set)
+        return list(pac_set & alt_set)
