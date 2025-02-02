@@ -6,20 +6,23 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        count = 0
-        stk = []
-        curr = root
-        while curr or stk:
-            while curr:
-                stk.append(curr)
-                curr = curr.left
-            
-            ele = stk.pop()
-            count+=1
-            if count == k:
-                return ele.val
-
-            curr = ele.right
         
-
+        def inorder(node):
+            
+            nonlocal k
+            print(k)
+            if  node:
                 
+                
+                leftVal = inorder(node.left)
+                if leftVal: 
+                    return leftVal
+                k-=1
+                if k == 0:
+                    return node.val
+                rightVal = inorder(node.right)
+                if rightVal : return rightVal
+            return 0
+        
+        return inorder(root)
+            
