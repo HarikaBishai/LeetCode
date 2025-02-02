@@ -26,7 +26,7 @@ class Solution:
                 new_r = r + i
                 new_c = c + j
 
-                if new_r in range(ROWS) and new_c in range(COLS) and grid[new_r][new_c] == 0 and ((new_r, new_c) not in best):
+                if new_r in range(ROWS) and new_c in range(COLS) and grid[new_r][new_c] == 0 and (new_r, new_c) not in best:
                     best[(new_r, new_c)] = dist+1
 
                     heapq.heappush(h, (dist+1, new_r, new_c))
