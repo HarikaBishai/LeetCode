@@ -5,12 +5,11 @@ class Solution:
         
         graph = defaultdict(list)
         
+        indegree = {c: 0 for word in words for c in word}
         
-        dictionary = ""
         for i in range(1, len(words)):
             word1 = words[i-1]
             word2 = words[i]
-            dictionary += word1 + word2
             n1 = len(word1)
             n2 = len(word2)
             minLen = min(n1, n2)
@@ -22,15 +21,11 @@ class Solution:
                 
                 if word1[j]!=word2[j]:
                     graph[word1[j]].append(word2[j])
+                    indegree[word2[j]]+=1
                     break
 
-        dictionary = set(list(dictionary))
-        indegree = { v:0 for v in dictionary}
 
-        for u in graph:
-            for v in graph[u]:
-                indegree[v]+=1
-
+      
         q = deque()
         for u in indegree:
             if indegree[u] == 0:
@@ -47,7 +42,7 @@ class Solution:
                 if indegree[nei] == 0:
                     q.append(nei)
         
-        return "".join(out) if len(out) == len(dictionary) else ""
+        return "".join(out) if len(out) == len(indegree) else ""
 
 
 
