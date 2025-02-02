@@ -29,7 +29,6 @@ class Solution:
             board[r][c] = 'T'
             seen.add((r,c))
             dir = [(-1, 0), (0, -1), (1,0), (0,1)]
-
             for i , j in dir:
                 new_r = i+ r
                 new_c = j+ c
