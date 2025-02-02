@@ -32,7 +32,6 @@ class Solution:
                 indegree[v]+=1
 
         q = deque()
-        seen = set()
         for u in indegree:
             if indegree[u] == 0:
                 q.append(u)
