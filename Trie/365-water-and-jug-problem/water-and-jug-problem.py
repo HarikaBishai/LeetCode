@@ -1,10 +1,7 @@
 class Solution:
     def canMeasureWater(self, x: int, y: int, target: int) -> bool:
         
-
         seen = set([(0,0)])
-
-
         q = deque([(0,0)])
         
         while q:
@@ -23,5 +20,4 @@ class Solution:
         return False
         
 
-        # return True if dfs(0,0) else False
         
