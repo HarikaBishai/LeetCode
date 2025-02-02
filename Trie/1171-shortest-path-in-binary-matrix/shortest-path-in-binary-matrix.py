@@ -16,7 +16,6 @@ class Solution:
         while h:
             dist, r, c = heapq.heappop(h)
             
-           
             if r == ROWS-1 and c == COLS-1:
                 return dist
             
