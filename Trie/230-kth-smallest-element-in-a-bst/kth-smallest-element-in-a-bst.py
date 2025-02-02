@@ -8,12 +8,8 @@ class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
         def inorder(node):
-            
             nonlocal k
-            print(k)
             if  node:
-                
-                
                 leftVal = inorder(node.left)
                 if leftVal: 
                     return leftVal
