@@ -16,7 +16,6 @@ class Solution:
         visited = {}
         def dfs(clonedNode, originalNode):
 
-            print(clonedNode.val)
             
             visited[originalNode] = clonedNode
             if originalNode.neighbors:
@@ -26,12 +25,10 @@ class Solution:
                         visited[nei].neighbors.append(clonedNode)
 
                     if nei not in visited:
-                        # 
                         neiNode = Node(nei.val)
                         
                         dfs(neiNode, nei)
                         neiNode.neighbors.append(clonedNode)
-                        # clonedNode.neighbors.append(neiNode)
             
                             
                    
