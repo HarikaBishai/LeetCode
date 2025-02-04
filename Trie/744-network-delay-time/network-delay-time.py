@@ -7,8 +7,6 @@ class Solution:
         for u, v, t in times:
             graph[u].append((v, t))
 
-        
-        print(graph)
         p_q = [(0,k)]
 
         visited = set()
