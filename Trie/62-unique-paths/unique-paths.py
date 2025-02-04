@@ -4,11 +4,11 @@ class Solution:
         dp = [[0]*n for i in range(m)]
 
 
-        dp[0][0] = 1
+        
 
-        for i in range(1,m):
+        for i in range(m):
             dp[i][0] = 1
-        for i in range(1,n):
+        for i in range(n):
             dp[0][i] = 1
 
         for i in range(1,m):
