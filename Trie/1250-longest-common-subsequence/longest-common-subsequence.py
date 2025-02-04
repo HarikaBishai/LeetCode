@@ -15,14 +15,6 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
         return dp[n1-1][n2-1]
-        # def lcs(i, j):
-        #     if i >= n1 or j >= n2:
-        #         return 0
-
-        #     if text1[i] == text2[j]:
-        #         return 1 + lcs(i+1, j+1)
-            
-        #     return max(lcs(i+1, j), lcs(i, j+1))
-
-        return lcs(0,0)
+       
+        
         
