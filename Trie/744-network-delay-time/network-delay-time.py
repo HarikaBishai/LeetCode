@@ -15,17 +15,14 @@ class Solution:
         time = 0
         while p_q:
             t, node = heapq.heappop(p_q)
-            
             if node in visited:
                 continue
             visited.add(node)
             time = t
-            
             for nei, nei_t in graph[node]:
                 if nei not in visited:
                     heapq.heappush(p_q, (time + nei_t, nei))
                     
-        
-
+    
         return time if len(visited) == n else -1
 
