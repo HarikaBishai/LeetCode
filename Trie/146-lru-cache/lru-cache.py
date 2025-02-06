@@ -51,10 +51,9 @@ class LRUCache:
             node = Node(value, key)
             self.insert(node)
             self.hash[key] = node
-        print(len(self.hash) ,self.capacity)
+            
         if len(self.hash) > self.capacity:
             leftKey = self.pop(self.left.next)
-            print(leftKey)
             if leftKey in self.hash:
                 del self.hash[leftKey]
 
