@@ -12,7 +12,7 @@ class Solution:
             if nums[i] < nums[i+1]:
                 idx = i
                 break
-        print(idx)
+                
         if idx == -1:
             nums.sort()
             return 
