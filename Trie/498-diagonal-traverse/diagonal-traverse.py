@@ -16,7 +16,6 @@ class Solution:
 
                 if c-1 < 0 or r+1 == ROWS:
                     dir = False
-                    print(r, c, r+1, ROWS)
                     if r + 1 == ROWS:
                         c = c + 1
                     else:
