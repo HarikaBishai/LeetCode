@@ -38,7 +38,6 @@ class Solution:
         if islands == 0: return 1
         if islands == 1:  return maxArea + 1 if maxArea != ROWS * COLS else maxArea
 
-        print(islands_map, grid)
         maxArea = 1
         for r in range(ROWS):
             for c in range(COLS):
