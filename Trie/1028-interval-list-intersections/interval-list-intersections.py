@@ -3,21 +3,21 @@ class Solution:
         
         out = []
 
-        q1 = deque(firstList)
-        q2 = deque(secondList)
+        i = 0
+        j = 0
 
-        while q1 and q2:
-            si, ei = q1[0]
-            sj, ej = q2[0]
+        while i < len(firstList) and j < len(secondList):
+            si, ei = firstList[i]
+            sj, ej = secondList[j]
 
             if sj <= si <= ej or si<= sj<=ei:
                 intersection = [max(si, sj), min(ei,ej)]
                 out.append(intersection)
             
             if ei<ej:
-                q1.popleft()
+                i+=1
             else:
-                q2.popleft()
+                j+=1
                  
             
 
