@@ -20,7 +20,10 @@ class Solution:
             if not node.left and not node.right:
                 out += int(curr_s)
                 return
-            dfs(node.left, curr_s)
-            dfs(node.right, curr_s)
+            if node.left:
+                dfs(node.left, curr_s)
+            if node.right:
+                dfs(node.right, curr_s)
+
         dfs(root, '')
         return out
