@@ -1,18 +1,17 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         
-        path = []
         out = []
-        def dfs(i):
+        def dfs(i,stk):
             if i == len(s):
-                out.append(" ".join(path))
+                out.append(" ".join(stk))
+                return
+            
             for word in wordDict:
-                if i + len(word) <= len(s) and s[i : i + len(word)] == word:
-                    path.append(word)
-                    dfs(i + len(word))
-                    path.pop()
-            return False
-
-        dfs(0)
-
+                if i+len(word) <= len(s) and s[i: i+len(word)] == word:
+                    stk.append(word)
+                    dfs(i+len(word), stk)
+                    stk.pop()
+            return
+        dfs(0, [])
         return out
