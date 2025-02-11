@@ -1,7 +1,6 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         stk = []
-        out = []
         intervals.sort()
         for start, end in intervals:
             if not stk or stk[-1][1] < start:
