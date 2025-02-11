@@ -13,5 +13,4 @@ class Solution:
                     if i-j+1  >= maxLen:
                         maxLen = i-j+1
                         index = j
-        print(maxLen, index)
         return s[index: index+maxLen]
