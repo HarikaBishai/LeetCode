@@ -1,17 +1,14 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
+        
         open = 0
         close = 0
-
-
-        out = []
         stk = []
-
-
+        out = []
         def dfs(open, close, stk):
-            if open == n and close == n:
+            if open == close == n:
                 out.append("".join(stk))
-            
+                return
             if open < n:
                 stk.append('(')
                 dfs(open+1, close, stk)
@@ -20,6 +17,6 @@ class Solution:
                 stk.append(')')
                 dfs(open, close+1, stk)
                 stk.pop()
-                
-        dfs(0,0, stk)
+            return
+        dfs(0,0,stk)
         return out
