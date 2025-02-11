@@ -37,7 +37,6 @@ class Solution:
         while len(lists) > 1:
             temp = []
             for i in range(0, len(lists), 2):
-                # print(i, len(lists))
                 list1 = lists[i]
                 list2 = None
                 if i + 1 < len(lists):
