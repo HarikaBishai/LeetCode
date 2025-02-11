@@ -5,43 +5,55 @@
 #         self.next = next
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        
-
-        def mergeLists(l1,l2):
-            dummy = ListNode(0)
-            curr = dummy
-
-            while l1 or l2:
-                if l1 and l2:
-                    if l1.val <= l2.val:
-                        curr.next = ListNode(l1.val)
-                        l1 = l1.next
-                    else:
-                        curr.next = ListNode(l2.val)
-                        l2 = l2.next
-                elif l1:
-                    curr.next = ListNode(l1.val)
-                    l1 = l1.next
-                else:
-                    curr.next = ListNode(l2.val)
-                    l2 = l2.next
-                curr = curr.next
-
-            return dummy.next
-        out = lists
-        i = 0
-        while len(out) > 1:
+        if not lists: return None
+        def mergeList(list1, list2):
+           
+            dummyNode = ListNode()
+            out = dummyNode
             i = 0
+            j = 0
+
+            while list1 and list2:
+                if list1.val <= list2.val:
+                    out.next = list1
+                    out = out.next
+                    list1 = list1.next
+                else:
+                    out.next = list2
+                    out = out.next
+                    list2 = list2.next
+            
+            while list1:
+                out.next = list1
+                out = out.next
+                list1 = list1.next
+            
+            while list2:
+                out.next = list2
+                out = out.next
+                list2 = list2.next
+            return dummyNode.next
+
+        while len(lists) > 1:
             temp = []
-            while i < len(out):
-                l1 = out[i]
-                l2 = None
-                if i+1 < len(out):
-                    l2 = out[i+1]
-                
-                temp.append(mergeLists(l1, l2))
-                i= i+2
-            out = temp
-        return out[0] if out else None
-                
+            for i in range(0, len(lists), 2):
+                # print(i, len(lists))
+                list1 = lists[i]
+                list2 = None
+                if i + 1 < len(lists):
+                    list2 = lists[i+1]
+                if list1 and list2:
+                    temp.append(mergeList(list1, list2))
+                elif list1:
+                    temp.append(list1)
+                else:
+                    temp.append(list2)
+            lists = temp
+        return lists[0]
+
+
+            
+
+
+
 
