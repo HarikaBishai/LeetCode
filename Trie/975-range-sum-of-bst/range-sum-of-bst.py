@@ -13,13 +13,12 @@ class Solution:
             if not root:
                 return
             if low <= root.val <= high:
-                print(root.val)
                 sum+= root.val
                 dfs(root.left)
                 dfs(root.right)
             elif root.val < low:
                 dfs(root.right)
-            else :
+            else:
                 dfs(root.left)
             
 
