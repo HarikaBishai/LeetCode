@@ -1,20 +1,17 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        n = len(height)
-
-        l = 0
-        r = n-1
-
-        maxL, maxR = height[l], height[r]
+        stk = []
         res = 0
-        while l<r:
+        for i in range(len(height)):
+            while stk and height[stk[-1]] < height[i]:
 
-            if height[l] <= height[r]:
-                maxL = max(maxL, height[l])
-                res+= maxL-height[l]
-                l+=1
-            else:
-                maxR = max(maxR, height[r])
-                res+= maxR-height[r]
-                r-=1
+                mid = stk.pop()
+                if stk:
+                    left = height[stk[-1]]
+                    right = height[i]
+                    h = min(left, right) - height[mid]
+                    w = i-stk[-1] -1
+                    print(h,w)
+                    res += w*h
+            stk.append(i)
         return res
