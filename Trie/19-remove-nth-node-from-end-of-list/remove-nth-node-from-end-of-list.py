@@ -10,21 +10,17 @@ class Solution:
         if not head:
             return head
 
-        # if n == 1:
-        #     return head.next
-        
         slow = head
         fast = head
         while fast and n:
             fast = fast.next
             n-=1
         prev = None
-        print(fast)
+
         while slow and fast:
             prev = slow
             slow = slow.next
             fast = fast.next
-        print(slow, prev)
        
         if slow == head:
             return head.next
