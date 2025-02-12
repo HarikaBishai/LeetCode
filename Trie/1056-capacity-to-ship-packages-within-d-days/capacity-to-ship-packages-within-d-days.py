@@ -1,30 +1,29 @@
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
-
         
-        l = max(weights)
-        r = sum(weights)
-
 
         def canShip(cap):
-            day = 1
-            currCap = cap
+            curr_w = 0
+            n_days = 1
             for w in weights:
-                if currCap - w < 0:
-                    day+=1
-                    currCap = cap
-                currCap -=w 
-                    
-            
-            return day <= days
-            
+                curr_w += w
+                if curr_w > cap:
+                    n_days+=1
+                    curr_w = w
+            return n_days <= days
+        
 
-        ans = r
+        l = max(weights)
+        r = sum(weights)
+        ans = -1
         while l<=r:
             m = (l+r)//2
+
             if canShip(m):
-                ans = min(m, ans)
-                r=m-1
+                ans = m
+                r =m-1
             else:
-                l=m+1
+                l = m+1
         return ans
+
+        
