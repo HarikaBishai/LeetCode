@@ -9,16 +9,18 @@ class Solution:
 
         dp = [False]*(subset_sum+1)
         dp[0] = True
+
         for curr in nums:
             for j in range(subset_sum, curr-1 ,-1):
                 
                 dp[j] = dp[j] or dp[j-curr]
+                
         return dp[subset_sum]
 
+
+
+
         dp = [[False]*(subset_sum+1) for _ in range(n+1)]
-
-        
-
 
         
         dp[0][0] = True
