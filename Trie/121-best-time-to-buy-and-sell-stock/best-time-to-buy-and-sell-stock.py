@@ -1,12 +1,11 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        
-        n = len(prices)
-        maxValtoRight = prices[-1]
+        maxProfVal = 0
+        maxVal = 0
+        for i in range(len(prices)-1, -1, -1):
+            price = prices[i]
+            maxVal = max(price, maxVal)
+            maxProfVal = max(maxProfVal, maxVal-price)
 
-        maxProfit = 0
+        return maxProfVal
 
-        for i in range(n-1, -1, -1):
-            maxValtoRight = max(maxValtoRight, prices[i])
-            maxProfit = max(maxValtoRight-prices[i], maxProfit)
-        return maxProfit
