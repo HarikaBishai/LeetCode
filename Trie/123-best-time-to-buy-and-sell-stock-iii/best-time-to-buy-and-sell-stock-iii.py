@@ -16,7 +16,6 @@ class Solution:
             maxPrice = max(prices[i+1], maxPrice)
             rightProfit[i] = max(rightProfit[i+1], maxPrice - prices[i])
 
-        print(leftProfit, rightProfit)
 
         maxProfit = 0
         for i in range(1, n):
