@@ -3,19 +3,19 @@ class Solution:
         
 
 
-        stk = []
-        out = []
-        def permutate(i):
-            if i == len(nums):
-                out.append(nums.copy())
-                return
+        # stk = []
+        # out = []
+        # def permutate(i):
+        #     if i == len(nums):
+        #         out.append(nums.copy())
+        #         return
 
-            for j in range(i,len(nums)):
-                nums[i], nums[j] = nums[j],nums[i]
-                permutate(i+1)
-                nums[i], nums[j] = nums[j],nums[i]
-        permutate(0)
-        return out
+        #     for j in range(i,len(nums)):
+        #         nums[i], nums[j] = nums[j],nums[i]
+        #         permutate(i+1)
+        #         nums[i], nums[j] = nums[j],nums[i]
+        # permutate(0)
+        # return out
 
 
 
