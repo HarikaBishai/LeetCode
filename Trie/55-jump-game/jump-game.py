@@ -14,7 +14,6 @@ class Solution:
                 if i + nums[i] >= n-1:
                     return True
                 if i + nums[i] > farthest:
-                    
                     for j in range(farthest+1,i+nums[i]+1):
                         dp[j] = True
                     farthest = i + nums[i]
