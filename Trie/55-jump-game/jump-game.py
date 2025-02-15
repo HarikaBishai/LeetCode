@@ -16,5 +16,4 @@ class Solution:
                     return True
                 for j in range(i,i+nums[i]+1):
                     dp[j] = True
-        print(dp)
         return dp[n-1]
