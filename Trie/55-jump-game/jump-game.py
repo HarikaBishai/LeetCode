@@ -3,8 +3,6 @@ class Solution:
         
         if len(nums)<=1:
             return True
-        # if nums[0] == 0:
-        #     return False
 
         n = len(nums)
         dp = [False] * len(nums)
@@ -12,7 +10,7 @@ class Solution:
 
         for i in range(len(nums)):
             if dp[i] :
-                if dp[i] and i + nums[i] >= n-1:
+                if i + nums[i] >= n-1:
                     return True
                 for j in range(i,i+nums[i]+1):
                     dp[j] = True
