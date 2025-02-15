@@ -10,13 +10,10 @@ class Solution:
 
         farthest = 0
         for i in range(len(nums)):
-            if dp[i] :
-                if i + nums[i] >= n-1:
-                    return True
-                if i + nums[i] > farthest:
-                    for j in range(farthest+1,i+nums[i]+1):
-                        if j + dp[j] >= n-1:
-                            return True
-                        dp[j] = True
-                    farthest = i + nums[i]
+            if dp[i] and i + nums[i] > farthest:
+                for j in range(farthest+1,i+nums[i]+1):
+                    if j + dp[j] >= n-1:
+                        return True
+                    dp[j] = True
+                farthest = i + nums[i]
         return dp[n-1]
