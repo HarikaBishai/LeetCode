@@ -8,10 +8,14 @@ class Solution:
         dp = [False] * len(nums)
         dp[0] = True
 
+        farthest = 0
         for i in range(len(nums)):
             if dp[i] :
                 if i + nums[i] >= n-1:
                     return True
-                for j in range(i+1,i+nums[i]+1):
-                    dp[j] = True
+                if i + nums[i] > farthest:
+                    
+                    for j in range(farthest+1,i+nums[i]+1):
+                        dp[j] = True
+                    farthest = i + nums[i]
         return dp[n-1]
