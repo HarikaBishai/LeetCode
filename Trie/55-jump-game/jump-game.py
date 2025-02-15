@@ -3,13 +3,13 @@ class Solution:
         
         if len(nums)<=1:
             return True
-        if nums[0] == 0:
-            return False
+        # if nums[0] == 0:
+        #     return False
 
         n = len(nums)
         dp = [False] * len(nums)
         dp[0] = True
-        farthestJump = 0
+
         for i in range(len(nums)):
             if dp[i] :
                 if dp[i] and i + nums[i] >= n-1:
