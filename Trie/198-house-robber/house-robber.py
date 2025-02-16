@@ -37,13 +37,13 @@ class Solution:
         if n == 1:
             return nums[0]
 
-        
-        dp = [0] * n
-        
-        dp[0] = nums[0]
-        dp[1] = max(nums[0], nums[1])
+
+        rob1 = nums[0]
+        rob2 =  max(nums[0], nums[1])
 
         for i in range(2, n):
-            dp[i] = max(dp[i-1], dp[i-2]+ nums[i])
+            temp = max(rob2, rob1 + nums[i])
+            rob1 = rob2
+            rob2 = temp
 
-        return max(dp[-1], dp[-2])
+        return max(rob1, rob2)
