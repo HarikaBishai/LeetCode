@@ -16,10 +16,10 @@ class Solution:
                 return nums[0]
 
 
-            rob1 = nums[0]
-            rob2 =  max(nums[0], nums[1])
+            rob1 = 0
+            rob2 =  0
 
-            for i in range(2, len(nums)):
+            for i in range(len(nums)):
                 temp = max(rob2, rob1 + nums[i])
                 rob1 = rob2
                 rob2 = temp
