@@ -3,26 +3,28 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        m = len(matrix)
-        n = len(matrix[0])
+        
 
-        cols = set()
-        rows = set()
+        ROWS = len(matrix)
+        COLS = len(matrix[0])
 
-        for i in range(m):
-            for j in range(n):
+        zero_rows = set()
+        zero_cols = set()
+
+        for i in range(ROWS):
+            for j in range(COLS):
                 if matrix[i][j] == 0:
-                    rows.add(i)
-                    cols.add(j)
+                    zero_rows.add(i)
+                    zero_cols.add(j)
 
-        for row in rows:
-            for j in range(n):
+        for row in zero_rows:
+            for j in range(COLS):
                 matrix[row][j] = 0
         
-        for col in cols:
-            for i in range(m):
+
+        for col in zero_cols:
+            for i in range(ROWS):
                 matrix[i][col] = 0
-        
         
 
         
