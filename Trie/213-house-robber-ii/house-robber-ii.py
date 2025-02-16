@@ -8,13 +8,6 @@ class Solution:
             return nums[0]
 
         def getMaxRobVal(nums):
-            if not nums:
-                return 0
-
-            n = len(nums)
-            if n == 1:
-                return nums[0]
-
 
             rob1 = 0
             rob2 =  0
