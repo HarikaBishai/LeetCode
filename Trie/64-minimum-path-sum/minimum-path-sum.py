@@ -3,9 +3,7 @@ class Solution:
         ROWS = len(grid)
         COLS = len(grid[0])
 
-        dp = [[0]* COLS for _ in range(ROWS)]
 
-        # dp[0][0] = grid[0][0]
         for i in range(1,COLS):
             grid[0][i] = grid[0][i-1] + grid[0][i]
         
