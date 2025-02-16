@@ -18,4 +18,4 @@ class Solution:
                 rob2 = temp
 
             return max(rob1, rob2)
-        return max(getMaxRobVal(nums[1:]), getMaxRobVal(nums[:len(nums)-1]))
+        return max(getMaxRobVal(nums[1:]), getMaxRobVal(nums[:-1]))
