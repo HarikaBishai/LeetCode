@@ -17,7 +17,7 @@ class Solution:
                 j-=1
             
             if sum > 9:
-                carry = sum//10
+                carry = int(sum/10)
                 
             else:
                 carry = 0
