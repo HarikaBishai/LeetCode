@@ -7,61 +7,37 @@
 
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
-        
-
         graph = defaultdict(list)
-        def buildgraph(node, parent):
+
+        def build_graph(node, parent):
             if node and parent:
-                graph[node.val].append(parent.val)
-                graph[parent.val].append(node.val)
+                graph[node].append(parent)
+                graph[parent].append(node)
             if node.left:
-                buildgraph(node.left, node)
+                build_graph(node.left, node)
             if node.right:
-                buildgraph(node.right, node)
-
-        buildgraph(root, None)
-
-        visited = set([target.val])
-        out = []
-        def dfs(node, dist):
-
-            if dist == k:
-                out.append(node)
-                return 
+                build_graph(node.right, node)
             
-            for nei in graph[node]:
-                if nei not in visited:
-                    visited.add(nei)
-                    dfs(nei, dist+1)
-            
-
-        dfs(target.val, 0)
-
-        return out
-
-        def addParent(curr, parent):
-            if curr:
-                curr.parent = parent
-                addParent(curr.left, curr)
-                addParent(curr.right, curr)
-
-        addParent(root, None)
-
-        out = []
-        visited = set()
-        def dfs(node, dis):
-            if not node or node in visited:
-                return
-            visited.add(node)
-            if dis == 0:
-                out.append(node.val)
-                return 
-            
-            dfs(node.left, dis-1)
-            dfs(node.right, dis-1)
-            dfs(node.parent, dis-1)
-
         
-        dfs(target, k)
+        build_graph(root, None)
+        
+        level = 0
+
+        q = deque([target])
+        visited = set([target])
+        out = []
+        while q:
+            for _ in range(len(q)):
+                node = q.popleft()
+                if level == k:
+                    out.append(node.val)
+                for nei in graph[node]:
+                    if nei not in visited:
+                        q.append(nei)
+                        visited.add(nei)
+                
+            if level == k:
+                break
+            level+=1
         return out
 
