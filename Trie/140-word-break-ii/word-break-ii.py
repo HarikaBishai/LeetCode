@@ -10,19 +10,15 @@ class Solution:
             
             if remaining_str in memo:
                 return memo[remaining_str]
-            print(remaining_str, '-----')
           
-
             sentences = []
 
             for i in range(1, len(remaining_str)+1):
                 
                     
                 curr_word = remaining_str[:i]
-                print(curr_word)
                 if curr_word in words_set:
                     sub_setences =  dfs(remaining_str[i:])
-                    print(sub_setences)
                     for sub in sub_setences:
                         if sub:
                             sentences.append(curr_word + " " + sub)
@@ -33,7 +29,6 @@ class Solution:
             return  memo[remaining_str]
         dfs(s)
 
-        print(memo)
         return memo[s]
 
 
