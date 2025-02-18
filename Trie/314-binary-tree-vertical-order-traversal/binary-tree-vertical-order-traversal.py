@@ -6,17 +6,19 @@
 #         self.right = right
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root: return []
-        columnMapping = defaultdict(list)
+        if not root:
+            return []
+        column_map = defaultdict(list)
 
         q = deque([(root, 0)])
-
         while q:
             node, column = q.popleft()
-            columnMapping[column].append(node.val)
+            column_map[column].append(node.val)
             if node.left:
                 q.append((node.left, column-1))
             if node.right:
                 q.append((node.right, column+1))
+            
         
-        return [columnMapping[i] for i in sorted(columnMapping.keys())]
+
+        return [column_map[key] for key in sorted(column_map.keys())]
