@@ -1,40 +1,46 @@
-class TrieNode:
-    def __init__(self,val):
-        self.val = val
+class Node:
+    def __init__(self):
         self.children = {}
-        self.endOfWord = False
-        self.strings = []
+        self.end_of_word = False
+        self.words = []
+class Trie:
+    def __init__(self):
+        self.root = Node()
+    def add_words(self, words):
+        words.sort()
+        for word in words:
+            curr = self.root
+            for c in word:
+                if c not in curr.children:
+                    curr.children[c] = Node()
+                
+                
+                curr = curr.children[c]
+                if len(curr.words) < 3:
+                    curr.words.append(word)
+                
+            curr.end_of_word = True
+
 
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
-        products.sort()
-        start = TrieNode("")
-        for product in products:
-            curr = start
-            for char in product:
-                if char not  in curr.children:
-                    curr.children[char] =  TrieNode(char)
-                curr = curr.children[char]
-                if len(curr.strings)<3:
-                    curr.strings.append(product)
-            curr.endOfWord == True
+        
+        trie = Trie()
+        trie.add_words(products)
+        root = trie.root
 
         out = []
-        curr = start
+        curr = root
+
         i = 0
-        while i < len(searchWord):
-            char = searchWord[i]
-            if char in curr.children:
-                curr = curr.children[char]
-                out.append(curr.strings)
+        for c in searchWord:
+            if c in curr.children:
+                curr = curr.children[c]
+                out.append(curr.words)
             else:
                 break
             i+=1
-
         while i < len(searchWord):
             out.append([])
             i+=1
-                
         return out
-                
-
