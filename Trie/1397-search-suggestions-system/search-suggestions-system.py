@@ -32,6 +32,19 @@ class Solution:
         out = []
         curr = root
 
+
+
+        
+
+        def dfs(i):
+            if i == len(searchWord):
+                return
+            
+
+            
+
+
+
         i = 0
         for c in searchWord:
             if c in curr.children:
