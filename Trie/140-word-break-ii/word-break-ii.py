@@ -1,7 +1,5 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        out = []
-        stk = []
 
         memo = {"": [""]}
         words_set = set(wordDict)
@@ -13,9 +11,7 @@ class Solution:
           
             sentences = []
 
-            for i in range(1, len(remaining_str)+1):
-                
-                    
+            for i in range(1, len(remaining_str)+1):   
                 curr_word = remaining_str[:i]
                 if curr_word in words_set:
                     sub_setences =  dfs(remaining_str[i:])
@@ -30,6 +26,9 @@ class Solution:
         dfs(s)
 
         return memo[s]
+
+
+
 
 
 
