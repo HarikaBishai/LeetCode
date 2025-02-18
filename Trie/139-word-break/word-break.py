@@ -19,27 +19,26 @@ class Trie:
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         
-        trie = Trie()
-        trie.add_words(wordDict)
-        root = trie.root
+        # trie = Trie()
+        # trie.add_words(wordDict)
+        # root = trie.root
 
-        n = len(s)
+        # n = len(s)
 
-        dp = [False]* (n)
+        # dp = [False]* (n)
         
-        for i in range(n):
-            if i == 0 or dp[i-1]:
-                curr = root
-                for j in range(i, n):
+        # for i in range(n):
+        #     if i == 0 or dp[i-1]:
+        #         curr = root
+        #         for j in range(i, n):
                     
-                    if s[j] not in curr.children:
-                        break
-                    curr = curr.children[s[j]]
-                    if curr.end_of_word:
-                        dp[j] = True
-
+        #             if s[j] not in curr.children:
+        #                 break
+        #             curr = curr.children[s[j]]
+        #             if curr.end_of_word:
+        #                 dp[j] = True
                    
-        return dp[n-1]
+        # return dp[n-1]
 
 
         n = len(s)
