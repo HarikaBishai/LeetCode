@@ -2,7 +2,6 @@ class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         out = []
         stk = []
-        words_set = set(wordDict) 
         def dfs(i):
             if i == len(s):
                 out.append(" ".join(stk.copy()))
