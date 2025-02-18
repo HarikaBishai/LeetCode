@@ -12,7 +12,6 @@ class Solution:
             nonlocal out, k
             if root:
                 inorder(root.left)
-                print(root)
                 k-=1
                 if k == 0:
                     out = root.val
