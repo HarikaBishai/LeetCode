@@ -1,17 +1,20 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        out = []
+        
+
 
         stk = []
-        def getSubset(i,nums):
-            if i == len(nums):
-                out.append(stk[:])
-                return 
-            stk.append(nums[i])
-            getSubset(i+1, nums)
-            stk.pop()
-            getSubset(i+1, nums)
+        out = []
+        visited = set()
+        def dfs(i):
+            out.append(stk.copy())
 
-        getSubset(0,nums)
-
+           
+            for j in range(i, len(nums)):
+                stk.append(nums[j])
+                dfs(j+1)
+                stk.pop()
+                
+        
+        dfs(0)
         return out
