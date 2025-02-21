@@ -43,7 +43,6 @@ class Solution:
            
             k_reversed, next = _reverse(curr.next)
             curr.next = k_reversed
-            print(k_reversed)
             while curr.next:
                 curr = curr.next
             curr.next = next
