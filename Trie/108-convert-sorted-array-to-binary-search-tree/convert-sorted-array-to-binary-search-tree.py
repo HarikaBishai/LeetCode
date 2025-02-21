@@ -17,7 +17,7 @@ class Solution:
             mid = (l + r)//2
 
             root = TreeNode(nums[mid])
-            root.left = dfs(nums[l:mid])
+            root.left = dfs(nums[:mid])
             root.right = dfs(nums[mid+1: ])
             return root
         return dfs(nums)
