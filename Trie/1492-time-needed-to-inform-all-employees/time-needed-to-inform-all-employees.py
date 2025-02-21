@@ -7,7 +7,6 @@ class Solution:
             if manager!= -1:
                 inform_time = informTime[manager]
                 graph[manager].append((employee, inform_time))
-        print(graph)
 
 
         q = deque([(headID, 0)])
