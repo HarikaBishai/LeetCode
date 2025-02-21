@@ -1,25 +1,30 @@
 class Solution:
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
-        graph = {i:[] for i in range(n)}
+        
+
+        graph = defaultdict(list)
+
 
         for u, v in edges:
             graph[u].append(v)
             graph[v].append(u)
 
-        def dfs(curr, par):
 
-            time = 0
+        visited = set([0])
 
-            for child in graph[curr]:
-                if child == par:
-                    continue
+        def dfs(node):
+            curr_time = 0
+            
+            for nei in graph[node]:
                 
-                childtime = dfs(child,curr) 
-                if childtime or hasApple[child]:
-                    time += 2 + childtime 
-            return time
+                if nei not in visited:
+                    visited.add(nei)
+                    childtime = dfs(nei)
+                    if childtime > 0 or hasApple[nei]:
+                        curr_time += 2 + childtime
+                    
+            return curr_time
+
+
         
-        return dfs(0, -1)
-
-
-    
+        return dfs(0)
