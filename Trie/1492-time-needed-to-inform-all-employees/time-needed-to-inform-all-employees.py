@@ -18,9 +18,6 @@ class Solution:
                 employee,m_time = q.popleft()
                 time = max(time, m_time)
 
-                
-                # if employee not in graph:
-                #     continue
                 for nei, nei_time in graph[employee]:
                     q.append((nei, m_time + nei_time))
         return time
