@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+        root = None
 
         def merge_tree(root1, root2):
 
