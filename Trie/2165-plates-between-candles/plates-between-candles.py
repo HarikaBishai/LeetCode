@@ -33,7 +33,6 @@ class Solution:
         for start , end in queries:
             left = get_lower_bound(start)
             right = get_upper_bound(end)
-            print( left, right, start, end)
             if  left == float('inf') or right == float('inf') or right <= left  :
                 out.append(0)
             else:
