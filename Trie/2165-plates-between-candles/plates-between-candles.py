@@ -34,7 +34,7 @@ class Solution:
             left = get_lower_bound(start)
             right = get_upper_bound(end)
             print( left, right, start, end)
-            if  left == float('inf') or right == float('inf') or right <= left  or abs(plates[left]-plates[right]) < 1:
+            if  left == float('inf') or right == float('inf') or right <= left  :
                 out.append(0)
             else:
                 out.append(plates[right] - plates[left] - (right-left))
