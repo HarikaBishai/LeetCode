@@ -1,30 +1,29 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        
         out = 0
-        curr = 0
-        sign  = 1
+        num = 0
+
         stk = []
+        sign = 1
+
         for c in s:
-            print(out)
+
             if c.isdigit():
-                curr = curr*10 + int(c)
+                num = num*10 + int(c)
+
             elif c in '+-':
-                out += curr*sign
-                curr = 0
-                if c == '+':
-                    sign = 1
-                else:
-                    sign = -1
-            elif c == '(':
+                out += sign * num
+                sign = 1 if c == '+' else -1
+                num = 0
+            elif c in '(':
                 stk.append(out)
                 stk.append(sign)
                 out = 0
                 sign = 1
             elif c == ')':
-                out += curr*sign
+                out += num * sign
                 out *= stk.pop()
                 out += stk.pop()
-                curr = 0
-        print(stk)
-        return out + (curr * sign)
+                num = 0
+                sign = 1
+        return out + (num * sign )
