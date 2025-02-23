@@ -1,61 +1,76 @@
 class Node:
-    def __init__(self,val = 0, key = 0):
-        self.val = val
-        self.prev = None
-        self.next = None
+    def __init__(self, val=0, key=0):
         self.key = key
+        self.val = val
+        self.next = None
+        self.prev = None
 
 class LRUCache:
 
+
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.hash = {}
         self.left = Node()
         self.right = Node()
-        self.left.next, self.right.prev = self.right, self.left
+        self.left.next = self.right
+        self.right.prev = self.left
+        self.hash = {}
 
-
-    def pop(self, node):
-        nodePrev = node.prev
-        nodeNext = node.next
-        nodePrev.next = nodeNext
-        nodeNext.prev = nodePrev
-        return node.key
-
+    
     def insert(self, node):
+
         prev = self.right.prev
-        next = self.right.prev.next
-        node.next = self.right
-        node.prev = prev
+        next = self.right
+
         prev.next = node
-        self.right.prev = node
+        node.prev = prev
+        node.next = next
+        next.prev = node
+
+        return node
+
+        
+    def remove(self, node):
+        next = node.next
+        prev = node.prev
+        next.prev = prev
+        prev.next = next
+
+        
+
 
     def get(self, key: int) -> int:
-        # print(self.hash)
         if key in self.hash:
-            self.pop(self.hash[key])
-            self.insert(self.hash[key])
-            return self.hash[key].val
-        return -1
-
-
-
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.hash:
-            self.pop(self.hash[key])
-            node = Node(value, key)
+            node = self.hash[key]
+            self.remove(node)
             self.insert(node)
             self.hash[key] = node
+            return node.val
         else:
-            node = Node(value, key)
-            self.insert(node)
-            self.hash[key] = node
+            return -1
+        
+    def put(self, key: int, value: int) -> None:
+
+        new_node = Node(value, key)
+        if key in self.hash:
+            curr_node = self.hash[key]
+            self.remove(curr_node)
             
-        if len(self.hash) > self.capacity:
-            leftKey = self.pop(self.left.next)
-            if leftKey in self.hash:
-                del self.hash[leftKey]
+            self.insert(new_node)
+            self.hash[key] = new_node
+        else:
+            if len(self.hash) + 1 > self.capacity:
+                left_node = self.left.next
+                self.remove(left_node)
+                del self.hash[left_node.key]
+                self.insert(new_node)
+                self.hash[key] = new_node
+            else:
+                self.insert(new_node)
+                self.hash[key] = new_node
+
+
+        
 
 
 # Your LRUCache object will be instantiated and called as such:
