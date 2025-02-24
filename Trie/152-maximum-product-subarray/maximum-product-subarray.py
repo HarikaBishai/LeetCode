@@ -11,5 +11,5 @@ class Solution:
             temp = max(curr_min*nums[i], curr_max*nums[i], nums[i])
             curr_min = min(curr_min*nums[i], curr_max*nums[i], nums[i])
             curr_max = temp
-            max_product = max(curr_max, max_product)
+            max_product = max(curr_max, max_product, curr_min)
         return max_product
