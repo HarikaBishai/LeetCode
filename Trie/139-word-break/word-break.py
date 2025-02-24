@@ -14,3 +14,15 @@ class Solution:
                     break
 
         return dp[n]
+
+
+        # def dfs(i):
+        #     if i == len(s):
+        #         return True
+            
+        #     for word in wordDict:
+        #         if i+len(word) <= len(s) and s[i: i+len(word)] in word_set:
+        #             if dfs(i+len(word)):
+        #                 return True
+        #     return False
+        # return dfs(0)
