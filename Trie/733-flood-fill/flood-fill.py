@@ -11,10 +11,9 @@ class Solution:
         target = image[sr][sc]
         if target == color:
             return image
-        print(target)
+
         while q:
             r, c = q.popleft()
-
             
             image[r][c] = color
             dir = [(-1,0),(1,0),(0,1),(0,-1)]
