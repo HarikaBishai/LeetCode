@@ -24,6 +24,8 @@ class Solution:
         out = dfs(digits) 
         return out if out!=[""] else []
 
+        
+
         stk = []
         out = []
         def dfs(i, stk):
