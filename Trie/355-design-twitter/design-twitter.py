@@ -12,10 +12,8 @@ class Twitter:
         self.tweetsHash[userId].append((tweetId,  self.count))
 
     def getNewsFeed(self, userId: int) -> List[int]:
-        print(self.followHash[userId])
         friends_list = list(self.followHash[userId])
         friends_list.append(userId)
-        print(friends_list)
         maxHeap = []
         for user in friends_list:
             if user in self.tweetsHash:
