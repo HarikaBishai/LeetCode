@@ -4,9 +4,43 @@ class Solution:
         counter = Counter(s)
 
 
-        counter
         n = len(s)
+        max_count = 0
+        max_char = ''
+        for val, count in counter.items():
+            if count > max_count:
+                max_count = count
+                max_char = val
+
+        if max_count > ((n + 1 )// 2):
+            return ''
+        ans = ['']*n
+        index = 0
+        while counter[max_char]:
+            ans[index] = max_char
+            index+=2
+            counter[max_char]-=1
+
+        
+        for char, count in counter.items():
+            while counter[char]:
+                if index >= len(s):
+                    index = 1
+                ans[index] = char
+                counter[char]-=1
+                index+=2
+        return "".join(ans)
+
+
+
+
+
         maxHeap = []
+
+
+
+
+
         for key, val in counter.items():
             heapq.heappush(maxHeap,(-val, key))
 
