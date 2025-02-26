@@ -12,6 +12,8 @@ class Solution:
                     queue.append([row, col])
                 elif grid[row][col] == 1:
                     fresh_orange_count += 1
+        if not fresh_orange_count:
+            return 0
         time = 1
         while queue:
             for i in range(len(queue)):
@@ -24,7 +26,6 @@ class Solution:
                     if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]) and grid[new_row][new_col] == 1:
                         grid[new_row][new_col] = 2
                         queue.append([new_row, new_col])
-                        # time_lapse = max(time_lapse, time+1)
                         fresh_orange_count -= 1
                         if fresh_orange_count == 0:
                             return time
