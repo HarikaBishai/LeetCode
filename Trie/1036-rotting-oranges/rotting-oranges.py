@@ -15,8 +15,8 @@ class Solution:
         if not fresh_orange_count:
             return 0
             
-        time = 1
-        while queue:
+        time = 0
+        while fresh_orange_count and queue:
             for i in range(len(queue)):
                 curr_row, curr_col = queue.popleft()
 
@@ -28,13 +28,12 @@ class Solution:
                         grid[new_row][new_col] = 2
                         queue.append([new_row, new_col])
                         fresh_orange_count -= 1
-                        if fresh_orange_count == 0:
-                            return time
+                        
             time+=1
         if fresh_orange_count != 0:
             return -1
 
-        return time_lapse
+        return time
 
 
         
