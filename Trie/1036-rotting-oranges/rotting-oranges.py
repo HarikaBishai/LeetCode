@@ -14,6 +14,7 @@ class Solution:
                     fresh_orange_count += 1
         if not fresh_orange_count:
             return 0
+            
         time = 1
         while queue:
             for i in range(len(queue)):
