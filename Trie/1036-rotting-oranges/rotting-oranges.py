@@ -12,8 +12,7 @@ class Solution:
                     queue.append([row, col])
                 elif grid[row][col] == 1:
                     fresh_orange_count += 1
-        if not fresh_orange_count:
-            return 0
+
             
         time = 0
         while fresh_orange_count and queue:
