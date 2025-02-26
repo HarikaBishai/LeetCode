@@ -1,38 +1,38 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        ROWS, COLS = len(grid), len(grid[0])
+        fresh_orange_count = 0
+        time_lapse = 0
+        rows, cols = len(grid), len(grid[0])
+        directions = ((-1, 0), (0,-1), (1,0), (0,1))
+        queue = collections.deque()
 
-        q = deque()
-        visited = set()
-        fresh , time = 0, 0
-        for i in range(ROWS):
-            for j in range(COLS):
-                if grid[i][j] == 0:
-                    continue
-                elif grid[i][j] == 1:
-                    fresh+=1
-                else:
-                    q.append((i,j))
-                    visited.add((i,j))
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == 2:
+                    queue.append([row, col])
+                elif grid[row][col] == 1:
+                    fresh_orange_count += 1
+        time = 1
+        while queue:
+            for i in range(len(queue)):
+                curr_row, curr_col = queue.popleft()
 
+                for direction in directions:
+                    new_row = curr_row + direction[0]
+                    new_col = curr_col + direction[1]
 
-        while q and fresh > 0:
-
-            for _ in range(len(q)):
-                r,c = q.popleft()
-
-                directions = [(-1,0),(1,0),(0,-1),(0,1)]
-
-
-                for i, j in directions:
-                    new_r = r + i
-                    new_c = c + j
-                    if new_r in range(ROWS) and new_c in range(COLS) and grid[new_r][new_c] == 1 and (new_r, new_c) not in visited:
-                        visited.add((new_r, new_c))
-                        grid[new_r][new_c] = 2
-                        q.append((new_r, new_c))
-                        fresh-=1
-
-            
+                    if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]) and grid[new_row][new_col] == 1:
+                        grid[new_row][new_col] = 2
+                        queue.append([new_row, new_col])
+                        # time_lapse = max(time_lapse, time+1)
+                        fresh_orange_count -= 1
+                        if fresh_orange_count == 0:
+                            return time
             time+=1
-        return time if fresh == 0 else -1
+        if fresh_orange_count != 0:
+            return -1
+
+        return time_lapse
+
+
+        
