@@ -12,7 +12,7 @@ class Solution:
         for i in range(len(nums)):
             if dp[i] and i + nums[i] > farthest:
                 for j in range(farthest+1,i+nums[i]+1):
-                    if j > n-1:
+                    if j >= n-1:
                         return True
                     dp[j] = True
                 farthest = i + nums[i]
