@@ -6,21 +6,18 @@ class MyStack:
     def push(self, x: int) -> None:
         self.q.append(x)
 
+        for i in range(len(self.q)-1):
+            self.q.append(self.q.popleft())
+
     def pop(self) -> int:
-        length = len(self.q)
-
-        i = 0
-
-        while i < length - 1:
-            x = self.q.popleft()
-            self.push(x)
-            i+=1
-
-        return self.q.popleft()
+        if self.q:
+            return self.q.popleft()
+        return None
 
     def top(self) -> int:
-        return self.q[-1]
-
+        if self.q:
+            return self.q[0]
+        return None
     def empty(self) -> bool:
         return not self.q
 
