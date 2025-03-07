@@ -30,8 +30,6 @@ var nextPermutation = function(nums) {
         }
     }
 
-   
-
 
     nums.push(...nums.splice(index+1).sort((a, b) => a - b))
     return nums
