@@ -9,8 +9,7 @@ class Solution:
 
         out = 0
         while x > 0:
-            rem = x%10
-            out = out * 10 + rem
+            out = out * 10 + x%10
             x = x//10
         out = -out if not sign else out
         return out if -pow(2, 31) <= out <= (pow(2,31) -1 )else 0
