@@ -16,7 +16,6 @@ class Solution:
                         if farthest >= n-1:
                             return True
                         dp[j] = True
-                if farthest >= n-1:
-                    return True
+                
         return False
                 
