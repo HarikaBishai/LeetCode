@@ -10,9 +10,9 @@ class Solution:
         while l < len(tasks):
             if l + 3 < n:
                 l = l+3
-                
             else:
                 l = n-1
+                
             out = max(tasks[l]+processorTime[i], out)
             i+=1
             l+=1
