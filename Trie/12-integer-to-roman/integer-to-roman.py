@@ -8,11 +8,13 @@ class Solution:
         
         result = ""  
 
-        for value, symbol in roman_map:
-            while num >= value:  
-                result += symbol
-                num -= value
         
+        for val, symbol in roman_map:
+            while num >= val:
+                result += symbol
+                num-= val
+                
+                
         return result
 
 
