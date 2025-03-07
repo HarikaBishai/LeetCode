@@ -18,5 +18,4 @@ class Solution:
                 out = max(tasks[l]+processorTime[i], out)
                 i+=1
             l+=1
-            print(out,l)
         return out
