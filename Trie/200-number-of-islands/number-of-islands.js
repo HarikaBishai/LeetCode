@@ -14,13 +14,10 @@ var numIslands = function(grid) {
         for( let [dx, dy] of dir) {
             const new_r = r + dx
             const new_c = c + dy
-
             if ( new_r >= 0 && new_r <= ROWS-1 && new_c >= 0 && new_c <= COLS-1 && !visited.has(`${new_r},${new_c}`) && grid[new_r][new_c] === '1') {
                 dfs(new_r, new_c)
             }
         }
-            
-    
     }
     for(let i=0; i<ROWS; i++ ) {
         for (let j=0;j<COLS; j++) {
