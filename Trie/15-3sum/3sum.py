@@ -13,7 +13,9 @@ class Solution:
 
                 if curr_sum == 0:
                     out.add((nums[i], nums[l], nums[r]))
-                if curr_sum > 0:
+                    l+=1
+                    r-=1
+                elif curr_sum > 0:
                     r-=1
                 else:
                     l+=1
