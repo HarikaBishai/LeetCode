@@ -8,10 +8,6 @@ class Solution:
             if s_word in seen:
                 seen[s_word]+=1
                 out += (seen[s_word]-1)
-                
             else:
                 seen[s_word] = 1
-
-       
-            
         return out
